@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<table>
+    <name id="tab_audit_classificacao" label="TabAuditClassificacao" app="TabAuditClassificacao" access="1" />
+    <foreignKeys></foreignKeys>
+    <fields>
+		<name id="A.cod_audit_classificacao" tag="input" type="hidden" datatype="int" maxlength="11" label="Cod Audit Classificacao" required="1" />
+		<name id="A.cod_propr_classif" tag="input" type="input" datatype="int" maxlength="11" label="Cod Propr Classif" required="0" />
+		<name id="A.dat_desativacao" tag="input" type="input" datatype="datetime" maxlength="60" label="Dat Desativacao" required="0" />
+		<name id="A.cod_usuario" tag="input" type="input" datatype="int" maxlength="11" label="Cod Usuario" required="0" />
+    </fields>
+    <export>
+		<name id="cod_audit_classificacao" disabled="true" />
+		<name id="cod_propr_classif" disabled="true" />
+		<name id="dat_desativacao" disabled="true" />
+		<name id="cod_usuario" disabled="true" /></export>	
+    <search>
+		<name id="cod_audit_classificacao" disabled="true" />
+		<name id="cod_propr_classif" disabled="true" />
+		<name id="dat_desativacao" disabled="true" />
+		<name id="cod_usuario" disabled="true" /></search>
+    <action>
+        <name id="cadastrar" disabled="true" />
+        <name id="editar" disabled="true" />
+        <name id="excluir" disabled="true" />
+        <name id="cancelar" disabled="true" />
+        <name id="visualizar" disabled="false" />
+    </action>
+</table>

@@ -1,0 +1,49 @@
+<input type="hidden" id="cod_sis_usuario_configs" name="cod_sis_usuario_configs" value="{$configs.cod_sis_usuario_configs}" />
+
+<table>
+    <tr>
+        <td><label for="num_registro_pagina" class="requiredLabel">{$lng.txt_num_registro_pagina}</label></td>
+        <td><input type='text' {$display_form} alt="integer" id="num_registro_pagina" name="num_registro_pagina" value="{$configs.num_registro_pagina|default:'50'}" maxlength="11" class="form-text required" />	
+                   <label class="info" {$display_info} title="Clique para Editar" >&nbsp;{$configs.num_registro_pagina} </label></td>
+        <td>{if $TipAjuda[1284]}<img src="../_img/help.png" width="24px" height="24px" alt="ajuda" onmouseover="Tip('{$TipAjuda[1284]}')" onmouseout="UnTip()" class="help"/>{/if}</td>
+    </tr>
+    <tr>
+        <td><label for="num_casas_decimais" class="requiredLabel">{$lng.txt_num_casas_decimais}</label></td>
+        <td>
+            <input type='text' {$display_form} alt="integer" id="num_casas_decimais" name="num_casas_decimais" value="{$configs.num_casas_decimais|default:'2'}" maxlength="11" class="form-text required" onkeydown="return v.soNumero(event)"/>	
+            <label class="info" {$display_info} title="Clique para Editar" >&nbsp;{$configs.num_casas_decimais} </label></td>
+        <td>{if $TipAjuda[1285]}<img src="../_img/help.png" width="24px" height="24px" alt="ajuda" onmouseover="Tip('{$TipAjuda[1285]}')" onmouseout="UnTip()" class="help"/>{/if}</td>
+    </tr>
+    <tr>
+        <td><label for="nom_moeda" class="requiredLabel">{$lng.txt_nom_moeda}</label></td>
+        <td>
+            <select id="nom_moeda" name="nom_moeda"  class="form-text required">
+                <option value="">--Selecione--</option>
+                <option value="R$" {if $configs.nom_moeda == 'R$'} selected="selected" {/if}>R$</option>
+                <option value="U$$" {if $configs.nom_moeda == 'U$$'} selected="selected" {/if}>U$$</option>
+            </select>
+<!--            <input type='text' {$display_form}  id="nom_moeda" name="nom_moeda" value="{$configs.nom_moeda}" maxlength="3" class="form-text required" />	-->
+            <label class="info" {$display_info} title="Clique para Editar" >&nbsp;{$configs.nom_moeda} </label></td>
+        <td>{if $TipAjuda[1286]}<img src="../_img/help.png" width="24px" height="24px" alt="ajuda" onmouseover="Tip('{$TipAjuda[1286]}')" onmouseout="UnTip()" class="help"/>{/if}</td>
+    </tr>
+    <tr>
+        <td><label for="bol_formata_tempo">{$lng.txt_bol_formata_tempo}</label></td>
+        <td>
+            <input type='checkbox' {$display_form}  id="bol_formata_tempo" name="bol_formata_tempo" value="{$configs.bol_formata_tempo}" maxlength="1" class="form-text" value="1" {if $configs.bol_formata_tempo == '1'} checked="checked" {/if}/>	
+                   <label class="info" {$display_info} title="Clique para Editar" >&nbsp;{$configs.bol_formata_tempo} </label>
+        </td>
+        <td>{if $TipAjuda[1287]}<img src="../_img/help.png" width="24px" height="24px" alt="ajuda" onmouseover="Tip('{$TipAjuda[1287]}')" onmouseout="UnTip()" class="help"/>{/if}</td>
+    </tr>
+    <tr>
+        <td><label for="bol_minutos">{$lng.txt_bol_minutos}</label></td>
+        <td>
+            <input type='checkbox' {$display_form}  id="bol_minutos" name="bol_minutos" value="{$configs.bol_minutos}" maxlength="1" class="form-text" value="1" {if $configs.bol_minutos == '1'} checked="checked" {/if}/>	
+                   <label class="info" {$display_info} title="Clique para Editar" >&nbsp;{$configs.bol_minutos} </label>
+        </td>
+        <td>{if $TipAjuda[1288]}<img src="../_img/help.png" width="24px" height="24px" alt="ajuda" onmouseover="Tip('{$TipAjuda[1288]}')" onmouseout="UnTip()" class="help"/>{/if}</td>
+    </tr>
+
+
+
+</table>
+

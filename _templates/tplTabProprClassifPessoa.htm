@@ -1,0 +1,71 @@
+{$xxajax}
+<!-- BEGIN PAGE CONTAINER-->
+<div class="container-fluid">
+    <!-- BEGIN PAGE HEADER-->   
+    <div class="row-fluid">
+        <div class="span12">                
+            <h3 class="page-title">
+                Modulo {$NomeModulo}                
+            </h3>
+            <ul class="breadcrumb">
+                <li>
+                    <i class="icon-home"></i>
+                    <a href="index.html">Home</a> 
+                    <span class="icon-angle-right"></span>
+                </li>
+                <li>
+                    <a href="#">{$NomeModulo}</a>               
+                </li>
+               
+            </ul>
+        </div>
+    </div>
+    <!-- END PAGE HEADER-->
+   
+    <!-- BEGIN PAGE CONTENT-->   
+    <div class="row-fluid">
+        <div class="span12">
+            <!-- BEGIN VALIDATION STATES-->
+            <div class="portlet box green">
+                <div class="portlet-title">
+                    <h4><i class="icon-reorder"></i>Dados</h4>                    
+                </div>
+                <div class="portlet-body form">
+                    <!-- BEGIN FORM-->                     
+			<form id="frm_{$modulo}" name="frm_{$modulo}" action="#" method="post" class="form-horizontal">
+                            <input type="hidden" name="f_action" id="f_action" value="{$acao}" />
+			    <input type="hidden" name="f_mod" id="f_mod" value="{$modulo}" />                            
+				<input type="hidden" id="cod_propr_classif_pessoa" name="cod_propr_classif_pessoa" value="{$dados.cod_propr_classif_pessoa}">
+
+<div class="alert alert-error hide">
+        <button class="close" data-dismiss="alert"></button>                            
+        </div>
+        <div class="alert alert-success hide">
+            <button class="close" data-dismiss="alert"></button>                            
+        </div><div class="control-group">                          <label class="control-label">{$lng.txt_cod_classif_pessoa}</label>
+		<div class="controls">
+                                <select  {$display_form}  id="cod_classif_pessoa" name="cod_classif_pessoa"  maxlength="11" class="span6 m-wrap popovers" {if $TipAjuda[66]} data-content="{$TipAjuda[66]}" data-original-title="Dica" data-trigger="hover" data-placement="top" {/if}><option value=''>Selecione</option>{html_options options=$lstcod_classif_pessoa selected=$dados.cod_classif_pessoa}
+		</select><span {$display_info} class="text">{$dados.cod_classif_pessoa} </span></div></div>	
+<div class="control-group">                          <label class="control-label">{$lng.txt_qtd_vendas}</label>
+		<div class="controls">
+                                    <input type="text"  {$display_form} alt="integer" id="qtd_vendas" name="qtd_vendas" value="{$dados.qtd_vendas}" maxlength="11" class="span6 m-wrap popovers" {if $TipAjuda[67]} data-content="{$TipAjuda[67]}" data-original-title="Dica" data-trigger="hover" data-placement="top" {/if}>
+		<span {$display_info} class="text">{$dados.qtd_vendas} </span></div></div>	
+<div class="control-group">                          <label class="control-label">{$lng.txt_vlr_vendas}</label>
+		<div class="controls">
+                                    <input type="text"  {$display_form}  id="vlr_vendas" name="vlr_vendas" value="{$dados.vlr_vendas}" maxlength="10,2" class="span6 m-wrap popovers" {if $TipAjuda[68]} data-content="{$TipAjuda[68]}" data-original-title="Dica" data-trigger="hover" data-placement="top" {/if}>
+		<span {$display_info} class="text">{$dados.vlr_vendas} </span></div></div>	
+<div class="control-group">                          <label class="control-label">{$lng.txt_bol_ativo}</label>
+		<div class="controls">
+                                    <input type='checkbox'  {$display_form}  id="bol_ativo" name="bol_ativo" value="{$dados.bol_ativo}" maxlength="4" class="span6 m-wrap popovers" {if $TipAjuda[69]} data-content="{$TipAjuda[69]}" data-original-title="Dica" data-trigger="hover" data-placement="top" {/if}>
+		<span {$display_info} class="text">{$dados.bol_ativo} </span></div></div>	
+<div class="control-group">                          <label class="control-label">{$lng.txt_dat_cadastro}</label>
+<span {$display_info} class="text">{if $dados.dat_cadastro eq ''}{$smarty.now|date_format:"%d/%m/%Y %T"}{else}{$dados.dat_cadastro}{/if}</span></div>	
+ 	 
+                </form> 
+                </div>
+            </div>
+            <!-- END VALIDATION STATES-->
+        </div>       
+    </div>
+    <!-- END PAGE CONTENT-->         
+</div>

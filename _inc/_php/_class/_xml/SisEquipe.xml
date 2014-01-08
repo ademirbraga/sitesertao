@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<table>
+    <name id="sis_equipe" label="SisEquipe" app="SisEquipe" access="52" />
+    <foreignKeys>
+			<name id="cod_equipe_superior" class="SisEquipe" label="Cod Equipe Superior" key="cod_equipe_superior" />
+	</foreignKeys>
+    <fields>
+		<name id="A.cod_equipe" tag="input" type="hidden" datatype="int" maxlength="10" label="Cod Equipe" required="1" />
+		<name id="A.nom_equipe" tag="input" type="input" datatype="varchar" maxlength="50" label="Nom Equipe" required="1" />
+		<name id="A.cod_equipe_superior" tag="select" type="select" datatype="int" maxlength="10" label="Cod Equipe Superior" required="0" />
+		<name id="A.dat_cadastro" tag="input" type="input" datatype="timestamp" maxlength="" label="Dat Cadastro" required="1" />
+		<name id="A.dat_cancelamento" tag="input" type="input" datatype="timestamp" maxlength="" label="Dat Cancelamento" required="0" />
+    </fields>
+    <export>
+		<name id="cod_equipe" enabled="true" />
+		<name id="nom_equipe" enabled="true" />
+		<name id="cod_equipe_superior" enabled="true" />
+		<name id="dat_cadastro" enabled="true" />
+		<name id="dat_cancelamento" enabled="true" /></export>	
+    <search>
+		<name id="cod_equipe" enabled="true" />
+		<name id="nom_equipe" enabled="true" />
+		<name id="cod_equipe_superior" enabled="true" />
+		<name id="dat_cadastro" enabled="true" />
+		<name id="dat_cancelamento" enabled="true" /></search>
+    <action>
+        <name id="cadastrar" enabled="true" />
+        <name id="editar" enabled="true" />
+        <name id="excluir" enabled="true" />
+        <name id="cancelar" enabled="true" />
+        <name id="visualizar" enabled="true" />
+    </action>
+</table>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<table>
+    <name id="sis_permissoes_has_sis_acoes" label="SisPermissoesHasSisAcoes" app="SisPermissoesHasSisAcoes" access="56" />
+    <foreignKeys>
+			<name id="cod_permissao" class="SisPermissoes" label="Cod Permissao" key="cod_permissao" />
+			<name id="cod_acao" class="SisAcoes" label="Cod Acao" key="cod_acao" />
+	</foreignKeys>
+    <fields>
+		<name id="A.cod_permissao" tag="select" type="hidden" datatype="int" maxlength="10" label="Cod Permissao" required="1" />
+		<name id="A.cod_acao" tag="select" type="hidden" datatype="int" maxlength="10" label="Cod Acao" required="1" />
+    </fields>
+    <export>
+		<name id="cod_permissao" enabled="true" />
+		<name id="cod_acao" enabled="true" /></export>	
+    <search>
+		<name id="cod_permissao" enabled="true" />
+		<name id="cod_acao" enabled="true" /></search>
+    <action>
+        <name id="cadastrar" enabled="true" />
+        <name id="editar" enabled="true" />
+        <name id="excluir" enabled="true" />
+        <name id="cancelar" enabled="true" />
+        <name id="visualizar" enabled="true" />
+    </action>
+</table>

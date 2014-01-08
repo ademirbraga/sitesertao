@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<table>
+    <name id="tab_cupom_x_tipo_servico" label="TabCupomXTipoServico" app="TabCupomXTipoServico" access="5" />
+    <foreignKeys></foreignKeys>
+    <fields>
+		<name id="A.cod_cupom" tag="input" type="input" datatype="int" maxlength="11" label="Cod Cupom" required="1" />
+		<name id="A.cod_sms_email" tag="input" type="input" datatype="int" maxlength="11" label="Cod Sms Email" required="1" />
+    </fields>
+    <export>
+		<name id="cod_cupom" disabled="true" />
+		<name id="cod_sms_email" disabled="true" /></export>	
+    <search>
+		<name id="cod_cupom" disabled="true" />
+		<name id="cod_sms_email" disabled="true" /></search>
+    <action>
+        <name id="cadastrar" disabled="true" />
+        <name id="editar" disabled="true" />
+        <name id="excluir" disabled="true" />
+        <name id="cancelar" disabled="true" />
+        <name id="visualizar" disabled="false" />
+    </action>
+</table>

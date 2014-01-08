@@ -1,0 +1,176 @@
+{literal}
+
+<style type="text/css">
+    #tabsPerfis{
+        margin-top: 25px;
+    }
+    .selecione_perfis{
+        font-weight: bold;
+        font-size: 14px;
+        color: #006bb5;
+        margin-bottom: 10px;
+    }
+    .header_perfil_ligacao{
+        background: #e0eef7;
+        padding: 5px;
+        font-weight: bold;
+    }
+
+</style>
+{/literal}
+<div id="content_table"> <!-- Tabela de registros -->
+    <form id="frm_{$modulo}" name="frm_{$modulo}" action="#" method="post" class="principal">
+
+        <input type="hidden" name="f_action" id="f_action" value="{$acao}" />
+        <input type="hidden" name="f_mod" id="f_mod" value="{$modulo}" />
+        <input type="hidden" id="cod_equipe_ax" name="cod_equipe_ax" value="{$dados[0].cod_equipe}" />
+
+        <table>
+
+            <tr>
+                <td><label for="cod_equipe" class="requiredLabel">{$lng.txt_nom_equipe}</label></td>
+                <td><select  {$display_form}  id="cod_equipe" name="cod_equipe"  maxlength="20" class="form-text required" ><option value=''>--Selecione--</option> <option value='todos'>--Todos--</option>{html_options options=$lstcod_equipe selected=$dados[0].codigo_equipe}	</select><label class="info" {$display_info} title="Clique para Editar" >&nbsp;{$dados.cod_contexto} </label></td>
+                <td>{if $TipAjuda[1126]}<img src="../_img/help.png" width="24px" height="24px" alt="ajuda" onmouseover="Tip('{$TipAjuda[1126]}')" onmouseout="UnTip()" class="help"/>{/if}</td>
+            </tr>
+
+        </table>
+
+
+        <div id="tabsPerfis">
+
+            <ul>
+                <li><a href="#tabs-1">Limites </a></li>
+
+            </ul>
+
+            <div id="tabs-1">
+
+                <h2 class="selecione_perfis">{$lng.txt_selecionar_equipe}: <span style="color: red" id="optEscolhida"> {$dados[0].nom_equipe} </span> </h2>
+
+                <table>
+
+                    <tr class="header_perfil_ligacao">
+                        <td>Limite</td>
+                        <td>Usar?</td>
+                        <td>Limite</td>
+                    </tr>
+
+                    {foreach key=key item=item from=$lst_limites}
+                    <tr id="n_{$key}">
+                        <td>- {$item.nom_limitacao} <input type="hidden" name="cod_limitacao[]" value="{$item.cod_limitacao} " /> </td>
+                        <td><input type="checkbox" name="usar[{$key}]" value="{$item.cod_limitacao}" id="usar_{$item.cod_limitacao}" rel="{$key}" /></td>    
+
+                        <td id="select_limitacao_{$key}">
+                            <span id="txt_required_{$key}" style="color: red"></span>  <input type='text' {$display_form} id="val_limitacao_{$key}" alt="integer" class="cod_limitacao_{$item.cod_limitacao}"  name="val_limitacao[{$key}]" value="{$dados.val_limitacao}" maxlength="5" size="5" />
+                        </td>
+
+                    </tr>
+                    {/foreach}
+
+                </table>
+
+            </div>
+
+
+        </div>
+
+        <div id="edit_cod_destino"></div>
+
+        <span id="msgbox" style="display:none"></span>
+    </form>                	
+</div>
+<div class="clr"></div>
+
+<script type="text/javascript">
+   
+    var limitesMarcadados = '{$limitesMarcadados}';
+    var cod_equipe_marcado = '{$cod_equipe_marcado}';
+    var MODULO_SISLIMITACOES = '{$modulo}';
+    
+    {literal}
+    $(function() {
+        {/literal}
+        {$valores};
+        {literal}
+    });
+    {/literal}
+     
+    {literal}
+    
+    $(function() {
+        
+        $( "#tabsPerfis" ).tabs();
+        
+        $(cod_equipe_marcado).attr('selected','selected');
+        
+        // Marca limites  para a edição
+        $(limitesMarcadados).attr("checked", "checked");
+        
+        FORM.beforeSend = function(){
+                
+            erro = true;
+            
+            $("input[type='checkbox']:checked").each(function(){
+                erro = false;
+            });
+                 
+            if(erro){
+                alert("Selecione um limite!");
+                FORM.cancel();
+                return false;
+            }
+             
+        };
+        
+        // Coloca a classe css  required para os registros cadastrados na tela de edição
+        $("#tabs-1-perfils").find("[type=checkbox]").each(function(){
+            if($(this).attr('checked'))
+                $("#val_limitacao_" + $(this).attr('rel')).addClass('required');
+        });
+        
+        $("#tabs-1 [type=checkbox]").change(function(){
+            
+            if(!$(this).attr('checked')){
+                $("#val_limitacao_" + $(this).attr('rel')).removeClass('required');
+                $("#txt_required_"+$(this).attr('rel')).html('');
+            }else {  
+                $("#txt_required_"+$(this).attr('rel')).html('*');
+                $("#val_limitacao_" + $(this).attr('rel')).addClass('required');
+            }
+        }); 	
+        
+        $("#cod_equipe").change(function(){
+           
+            var params = {
+                modulo: MODULO_SISLIMITACOES	
+                ,method: 'verificaDisponibilidade' 	
+                ,args: {cod_equipe: $(this).val()}
+            };
+            $.ajax({
+                url: '../_ax/axRequest.php'
+                ,type: 'post'
+                ,dataType: 'json'
+                ,data: params
+                ,success: function(r){			
+                    if(r.response){
+                        $("#optEscolhida").html('');
+                        $('#cod_equipe').val('').attr('selected','selected');
+                        alert("Esta equipe já possui limites cadastrados!");
+                        return false;
+                    }
+                }			
+            });
+            
+            opcao_escolhida = $("#cod_equipe option:selected").text();
+           
+            if(opcao_escolhida == "--Todos--")
+                opcao_escolhida = "Todos";
+           
+            $("#optEscolhida").html(opcao_escolhida);
+        }); 	
+    
+    });
+       
+</script>
+
+{/literal}

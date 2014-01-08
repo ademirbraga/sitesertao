@@ -1,0 +1,26 @@
+
+{literal}
+<script language="javascript" type="text/javascript">
+</script>
+{/literal}
+<div id="content_table"> <!-- Tabela de registros -->
+	<form id="frm_{$modulo}" name="frm_{$modulo}" action="#" method="post">
+		<input type="hidden" name="f_action" id="f_action" value="{$acao}" />
+ 		<input type="hidden" name="f_mod" id="f_mod" value="{$modulo}" />
+					<input type="hidden" id="cod_perfil_painel" name="cod_perfil_painel" value="{$dados.cod_perfil_painel}" />
+<input type="hidden" id="cod_painel_permissoes" name="cod_painel_permissoes" value="{$dados.cod_painel_permissoes}" />
+
+		<table>
+			<tr>
+				<td><label for="num_nivel_permissao" class="requiredLabel">{$lng.txt_num_nivel_permissao}</label></td>
+				<td><input type='text' title="1330" {$display_form} alt="integer" id="num_nivel_permissao" name="num_nivel_permissao" value="{$dados.num_nivel_permissao}" maxlength="11" class="form-text required" />	<label class="info" {$display_info} title="Clique para Editar" >&nbsp;{$dados.num_nivel_permissao} </label></td>
+			</tr>
+
+	</table>
+    <span id="msgbox" style="display:none"></span>
+    </form>                	
+</div>
+<div class="clr"></div>{literal}
+<script> 
+</script>
+{/literal}

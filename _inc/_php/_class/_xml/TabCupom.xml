@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<table>
+    <name id="tab_cupom" label="TabCupom" app="TabCupom" access="3" />
+    <foreignKeys>
+			<name id="cod_usuario" class="SisUsuario" label="Cod Usuario" key="cod_usuario" />
+			<name id="cod_equipe" class="SisEquipe" label="Cod Equipe" key="cod_equipe" />
+			<name id="cod_status_cupom" class="TabStatusCupom" label="Cod Status Cupom" key="cod_status_cupom" />
+	</foreignKeys>
+    <fields>
+		<name id="A.cod_cupom" tag="input" type="hidden" datatype="int" maxlength="11" label="Cod Cupom" required="1" />
+		<name id="A.cod_usuario" tag="select" type="select" datatype="int" maxlength="11" label="Cod Usuario" required="0" />
+		<name id="A.cod_equipe" tag="select" type="select" datatype="int" maxlength="11" label="Cod Equipe" required="0" />
+		<name id="A.cod_status_cupom" tag="select" type="select" datatype="int" maxlength="11" label="Cod Status Cupom" required="0" />
+		<name id="A.nom_cupom" tag="input" type="input" datatype="varchar" maxlength="45" label="Nom Cupom" required="0" />
+		<name id="A.dat_cadastro" tag="input" type="input" datatype="timestamp" maxlength="60" label="Dat Cadastro" required="0" />
+		<name id="A.dat_inicio_validade" tag="input" type="input" datatype="datetime" maxlength="60" label="Dat Inicio Validade" required="0" />
+		<name id="A.dat_fim_validade" tag="input" type="input" datatype="datetime" maxlength="60" label="Dat Fim Validade" required="0" />
+		<name id="A.cod_tipo_cupom" tag="input" type="input" datatype="int" maxlength="11" label="Cod Tipo Cupom" required="0" />
+		<name id="A.vlr_meta" tag="input" type="input" datatype="decimal" maxlength="10,2" label="Vlr Meta" required="0" />
+		<name id="A.vlr_resgate" tag="input" type="input" datatype="decimal" maxlength="10,2" label="Vlr Resgate" required="0" />
+    </fields>
+    <export>
+		<name id="cod_cupom" disabled="true" />
+		<name id="cod_usuario" disabled="true" />
+		<name id="cod_equipe" disabled="true" />
+		<name id="cod_status_cupom" disabled="true" />
+		<name id="nom_cupom" disabled="true" />
+		<name id="dat_cadastro" disabled="true" />
+		<name id="dat_inicio_validade" disabled="true" />
+		<name id="dat_fim_validade" disabled="true" />
+		<name id="cod_tipo_cupom" disabled="true" />
+		<name id="vlr_meta" disabled="true" />
+		<name id="vlr_resgate" disabled="true" /></export>	
+    <search>
+		<name id="cod_cupom" disabled="true" />
+		<name id="cod_usuario" disabled="true" />
+		<name id="cod_equipe" disabled="true" />
+		<name id="cod_status_cupom" disabled="true" />
+		<name id="nom_cupom" disabled="true" />
+		<name id="dat_cadastro" disabled="true" />
+		<name id="dat_inicio_validade" disabled="true" />
+		<name id="dat_fim_validade" disabled="true" />
+		<name id="cod_tipo_cupom" disabled="true" />
+		<name id="vlr_meta" disabled="true" />
+		<name id="vlr_resgate" disabled="true" /></search>
+    <action>
+        <name id="cadastrar" disabled="true" />
+        <name id="editar" disabled="true" />
+        <name id="excluir" disabled="true" />
+        <name id="cancelar" disabled="true" />
+        <name id="visualizar" disabled="false" />
+    </action>
+</table>

@@ -1,0 +1,101 @@
+{$xxajax}
+<!-- BEGIN PAGE CONTAINER-->
+<div class="container-fluid">
+    <!-- BEGIN PAGE HEADER-->   
+    <div class="row-fluid">
+        <div class="span12">                
+            <h3 class="page-title">
+                Modulo {$NomeModulo}                
+            </h3>
+            <ul class="breadcrumb">
+                <li>
+                    <i class="icon-home"></i>
+                    <a href="index.html">Home</a> 
+                    <span class="icon-angle-right"></span>
+                </li>
+                <li>
+                    <a href="#">{$NomeModulo}</a>               
+                </li>
+               
+            </ul>
+        </div>
+    </div>
+    <!-- END PAGE HEADER-->
+   
+    <!-- BEGIN PAGE CONTENT-->   
+    <div class="row-fluid">
+        <div class="span12">
+            <!-- BEGIN VALIDATION STATES-->
+            <div class="portlet box green">
+                <div class="portlet-title">
+                    <h4><i class="icon-reorder"></i>Dados</h4>                    
+                </div>
+                <div class="portlet-body form">
+                    <!-- BEGIN FORM-->                     
+			<form id="frm_{$modulo}" name="frm_{$modulo}" action="#" method="post" class="form-horizontal">
+                            <input type="hidden" name="f_action" id="f_action" value="{$acao}" />
+			    <input type="hidden" name="f_mod" id="f_mod" value="{$modulo}" />                            
+				<input type="hidden" id="cod_cliente_cardio" name="cod_cliente_cardio" value="{$dados.cod_cliente_cardio}">
+
+<div class="alert alert-error hide">
+        <button class="close" data-dismiss="alert"></button>                            
+        </div>
+        <div class="alert alert-success hide">
+            <button class="close" data-dismiss="alert"></button>                            
+        </div><div class="control-group">{if $Revenda eq 0}                          <label class="control-label">{$lng.txt_cod_usuario}</label>
+		<div class="controls">
+                                <select  {$display_form}  id="cod_usuario" name="cod_usuario"  maxlength="11" class="span6 m-wrap popovers" {if $TipAjuda[39]} data-content="{$TipAjuda[39]}" data-original-title="Dica" data-trigger="hover" data-placement="top" data-trigger="hover" data-placement="top" {/if}><option value=''>Selecione</option>{html_options options=$lstcod_usuario selected=$dados.cod_usuario}
+		</select></div><span {$display_info} class="text">{$dados.cod_usuario} </span>{else}
+	<input type="hidden" id="cod_usuario" name="cod_usuario" value="{$dados.cod_usuario}">
+	{/if}</div>	
+<div class="control-group">                          <label class="control-label">{$lng.txt_nom_endereco}<span class="required">*</span> </label>
+		<div class="controls">
+                                    <input type="text"  {$display_form}  id="nom_endereco" name="nom_endereco" value="{$dados.nom_endereco}" maxlength="225" data-required="1" class="span6 m-wrap popovers required" {if $TipAjuda[40]} data-content="{$TipAjuda[40]}" data-original-title="Dica" data-trigger="hover" data-placement="top" data-trigger="hover" data-placement="top" {/if}>
+		</div><span {$display_info} class="text">{$dados.nom_endereco} </span></div>	
+<div class="control-group">                          <label class="control-label">{$lng.txt_num_endereco}<span class="required">*</span> </label>
+		<div class="controls">
+                                    <input type="text"  {$display_form} alt="integer" id="num_endereco" name="num_endereco" value="{$dados.num_endereco}" maxlength="11" data-required="1" class="span6 m-wrap popovers required" {if $TipAjuda[41]} data-content="{$TipAjuda[41]}" data-original-title="Dica" data-trigger="hover" data-placement="top" data-trigger="hover" data-placement="top" {/if}>
+		</div><span {$display_info} class="text">{$dados.num_endereco} </span></div>	
+<div class="control-group">                          <label class="control-label">{$lng.txt_nom_complemento}</label>
+		<div class="controls">
+                                    <input type="text"  {$display_form}  id="nom_complemento" name="nom_complemento" value="{$dados.nom_complemento}" maxlength="125" class="span6 m-wrap popovers" {if $TipAjuda[42]} data-content="{$TipAjuda[42]}" data-original-title="Dica" data-trigger="hover" data-placement="top" data-trigger="hover" data-placement="top" {/if}>
+		</div><span {$display_info} class="text">{$dados.nom_complemento} </span></div>	
+<div class="control-group">                          <label class="control-label">{$lng.txt_nom_bairro}<span class="required">*</span> </label>
+		<div class="controls">
+                                    <input type="text"  {$display_form}  id="nom_bairro" name="nom_bairro" value="{$dados.nom_bairro}" maxlength="125" data-required="1" class="span6 m-wrap popovers required" {if $TipAjuda[43]} data-content="{$TipAjuda[43]}" data-original-title="Dica" data-trigger="hover" data-placement="top" data-trigger="hover" data-placement="top" {/if}>
+		</div><span {$display_info} class="text">{$dados.nom_bairro} </span></div>	
+<div class="control-group">                          <label class="control-label">{$lng.txt_nom_cidade}<span class="required">*</span> </label>
+		<div class="controls">
+                                    <input type="text"  {$display_form}  id="nom_cidade" name="nom_cidade" value="{$dados.nom_cidade}" maxlength="225" data-required="1" class="span6 m-wrap popovers required" {if $TipAjuda[44]} data-content="{$TipAjuda[44]}" data-original-title="Dica" data-trigger="hover" data-placement="top" data-trigger="hover" data-placement="top" {/if}>
+		</div><span {$display_info} class="text">{$dados.nom_cidade} </span></div>	
+<div class="control-group">                          <label class="control-label">{$lng.txt_nom_estado}<span class="required">*</span> </label>
+		<div class="controls">
+                                    <input type="text"  {$display_form}  id="nom_estado" name="nom_estado" value="{$dados.nom_estado}" maxlength="225" data-required="1" class="span6 m-wrap popovers required" {if $TipAjuda[45]} data-content="{$TipAjuda[45]}" data-original-title="Dica" data-trigger="hover" data-placement="top" data-trigger="hover" data-placement="top" {/if}>
+		</div><span {$display_info} class="text">{$dados.nom_estado} </span></div>	
+<div class="control-group">                          <label class="control-label">{$lng.txt_nom_email}<span class="required">*</span> </label>
+		<div class="controls">
+                                    <input type="text"  {$display_form}  id="nom_email" name="nom_email" value="{$dados.nom_email}" maxlength="125" data-required="1" class="span6 m-wrap popovers required" {if $TipAjuda[46]} data-content="{$TipAjuda[46]}" data-original-title="Dica" data-trigger="hover" data-placement="top" data-trigger="hover" data-placement="top" {/if}>
+		</div><span {$display_info} class="text">{$dados.nom_email} </span></div>	
+<div class="control-group">                          <label class="control-label">{$lng.txt_num_telefone}<span class="required">*</span> </label>
+		<div class="controls">
+                                    <input type="text"  {$display_form}  id="num_telefone" name="num_telefone" value="{$dados.num_telefone}" maxlength="45" data-required="1" class="span6 m-wrap popovers required" {if $TipAjuda[47]} data-content="{$TipAjuda[47]}" data-original-title="Dica" data-trigger="hover" data-placement="top" data-trigger="hover" data-placement="top" {/if}>
+		</div><span {$display_info} class="text">{$dados.num_telefone} </span></div>	
+<div class="control-group">                          <label class="control-label">{$lng.txt_num_celular}</label>
+		<div class="controls">
+                                    <input type="text"  {$display_form}  id="num_celular" name="num_celular" value="{$dados.num_celular}" maxlength="45" class="span6 m-wrap popovers" {if $TipAjuda[48]} data-content="{$TipAjuda[48]}" data-original-title="Dica" data-trigger="hover" data-placement="top" data-trigger="hover" data-placement="top" {/if}>
+		</div><span {$display_info} class="text">{$dados.num_celular} </span></div>	
+<div class="control-group">                          <label class="control-label">{$lng.txt_dat_cadastro}<span class="required">*</span> </label>
+<span {$display_info} class="text">{if $dados.dat_cadastro eq ''}{$smarty.now|date_format:"%d/%m/%Y %T"}{else}{$dados.dat_cadastro}{/if}</span></div>	
+<div class="control-group">                          <label class="control-label">{$lng.txt_dat_finalizado}</label>
+		<div class="controls">
+                                    <input type="text"  {$display_form} alt="date" id="dat_finalizado" name="dat_finalizado" value="{$dados.dat_finalizado}" maxlength="60" class="span6 m-wrap popovers" {if $TipAjuda[50]} data-content="{$TipAjuda[50]}" data-original-title="Dica" data-trigger="hover" data-placement="top" data-trigger="hover" data-placement="top" {/if}>
+		</div><span {$display_info} class="text">{$dados.dat_finalizado} </span></div>	
+ 	 
+                </form> 
+                </div>
+            </div>
+            <!-- END VALIDATION STATES-->
+        </div>       
+    </div>
+    <!-- END PAGE CONTENT-->         
+</div>

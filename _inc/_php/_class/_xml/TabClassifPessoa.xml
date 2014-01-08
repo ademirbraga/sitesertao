@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<table>
+    <name id="tab_classif_pessoa" label="TabClassifPessoa" app="TabClassifPessoa" access="2" />
+    <foreignKeys></foreignKeys>
+    <fields>
+		<name id="A.cod_classif_pessoa" tag="input" type="hidden" datatype="int" maxlength="11" label="Cod Classif Pessoa" required="1" />
+		<name id="A.nom_classif_cliente" tag="input" type="input" datatype="varchar" maxlength="45" label="Nom Classif Cliente" required="0" />
+    </fields>
+    <export>
+		<name id="cod_classif_pessoa" disabled="true" />
+		<name id="nom_classif_cliente" disabled="true" /></export>	
+    <search>
+		<name id="cod_classif_pessoa" disabled="true" />
+		<name id="nom_classif_cliente" disabled="true" /></search>
+    <action>
+        <name id="cadastrar" disabled="true" />
+        <name id="editar" disabled="true" />
+        <name id="excluir" disabled="true" />
+        <name id="cancelar" disabled="true" />
+        <name id="visualizar" disabled="false" />
+    </action>
+</table>

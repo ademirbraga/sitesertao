@@ -1,0 +1,180 @@
+<!-- 
+<script type="text/javascript" src="../_inc/_js/uploadify/swfobject.js"></script>
+<script type="text/javascript" src="../_inc/_js/uploadify/jquery.uploadify.v2.1.4.js"></script>
+<script type="text/javascript" src="../_inc/_js/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+<script type="text/javascript" src="../_inc/_js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+<link rel="stylesheet" type="text/css" href="../_inc/_js/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+ -->
+<link href="../_inc/_js/uploadify/uploadify.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="../_inc/_js/uploadify/swfobject.js"></script>
+<script type="text/javascript" src="../_inc/_js/uploadify/jquery.uploadify.v2.1.4.min.js"></script>
+<script type="text/javascript" src="../_inc/_js/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+<script type="text/javascript" src="../_inc/_js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+<link rel="stylesheet" type="text/css" href="../_inc/_js/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+
+
+{literal}
+<style>
+    
+    #erro_ext{
+        color: red;
+    }
+    .titleBox{display:block; font-weight:bold; color:#666666; font-size:small;margin-bottom:15px; padding-bottom:5px;border-bottom:1px dashed #CCC; width:95%}
+    .div_info{ border:1px solid #AED0EA; background:url(images/ui-bg_highlight-soft_100_deedf7_1x100.png) repeat-x scroll 50% 50% #DEEDF7; padding:5px; font-size:11px; line-height:15px; width:300px; float:left; margin:20px 5px 0; height:80px;}
+    .tablecss input{ width:50px}
+
+    #tabsPerfis{
+        margin-top: 25px;
+    }
+    form h3 { font-size:12px; width:98%; margin:0 0 10px 1%; font-weight:bold; }
+</style>
+{/literal}<!-- enctype="multipart form-data" -->
+<div id="content_table"> <!-- Tabela de registros -->
+    <form id="frm_{$modulo}" name="frm_{$modulo}" action="#" method="post" class="principal" >
+        <input type="hidden" name="f_action" id="f_action" value="{$acao}" />
+        <input type="hidden" name="f_mod" id="f_mod" value="{$modulo}" />
+
+        <input type="hidden" name="metodo" id="metodo" value="{$metodo}" />
+
+
+            <!-- IMPORTAR PLANILHAS-->
+            <div id="tabs-2-perfils">
+                 <br />
+                <div>
+                    <font color="red"><p>{$lng.txt_importar_planilha}</p></font>
+                </div>
+                <br />
+                <br />
+
+                <table>
+                    <tr>
+                        <td><label for="arquivo" class="requiredLabel">{$lng.txt_nom_arquivo}</label></td>  
+
+                        <td> 
+                            <input id="file_upload" type="file" name="Filedata" />
+<!--                            <a href="javascript:$('#file_upload').uploadifyUpload()">{$lng.txt_enviar_arquivo}</a> -->
+								<a href="javascript:remover();">{$lng.txt_remover_arquivo}</a>
+                            <br /> 
+
+                            <input type="hidden" name="nome_arquivo" id="nome_arquivo" size="25" value=""  readonly="" /> 
+
+                            <div id="load_upload"></div>
+                            <br /> 
+							<span>{$lng.txt_upload_demora}</span>
+                            <span id="erro_ext"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                    	<td colspan="2">
+                    	<div>
+                    		<div>
+                    			<p>
+                    			<span>
+	                    		<strong>Passos</strong><br/><br/>
+	                    		<ul>
+	                    			<li>1) Converta a planilha para o format CSV (Separado por vírgula)<br/><br/></li>
+	                    			<li>2) Faça compactação da planilha em formato ZIP<br/><br/></li>
+	                    			<li>3) Clique no botão "Anexar Planilha", selecione o arquivo e espere até que apareça a mensagem de upload completo!<br/><br/></li>
+	                    		</ul>
+	                    		</span>
+	                    		</p>
+                    		</div>
+                    	</div>
+                    	</td>
+                    </tr>
+                </table>
+
+            </div>
+            <!-- FIM IMPORTAR PLANILHAS-->
+
+          
+        <span id="msgbox" style="display:none"></span>
+    </form>                	
+</div>
+<div class="clr"></div>
+
+{literal}
+ <script type="text/javascript">
+var botao_anexar_planilha = {/literal}'{$lng.txt_botao_anexar}'{literal};
+var user = {/literal}'{$cod_usuario}'{literal};
+var equipe = {/literal}'{$cod_equipe}'{literal};
+function remover(){
+	$('#file_upload').uploadifyClearQueue();
+	$.ajax({
+		type: "GET",	
+		  url: "appUploadClientes.php?remove=1",
+		  context: document.body,
+		  success: function(){
+		    $(this).addClass("done");
+		  }
+		});
+}
+ 
+$(function() {
+  $('#file_upload').uploadify({
+	  'uploader'  : '../_inc/_js/uploadify/uploadify.swf',
+	  'script'    : 'appUploadClientes.php?ue='+user+'_'+equipe,
+	  'cancelImg' : '../_inc/_js/uploadify/cancel.png',
+	  'folder'    : '/uploads/clientes',
+	  'removeCompleted' : true,
+	  'multi': false,
+      'auto': true,
+      'buttonText'     : botao_anexar_planilha,
+	  'sizeLimit'   : 102400,
+	  'removeCompleted': false,
+	  'fileExt'     : '*.csv;*.zip',
+	  'onError'     : function (event,ID,fileObj,errorObj) {
+	      alert(errorObj.type + ' Error: ' + errorObj.info);
+	    },
+    'onProgress'  : function(event,ID,fileObj,data) {
+        var bytes = Math.round(data.bytesLoaded / 1024);
+        $('#' + $(event.target).attr('id') + ID).find('.percentage').text(' - ' + bytes + 'KB Uploaded');
+        return false;
+      },
+      'onAllComplete' : function(event,data) {
+          alert(' {/literal}{$lng.txt_upload_sucesso}{literal}!');
+        }
+	});				
+});
+</script>
+<style type="text/css">
+
+#custom-demo .uploadifyQueueItem {
+  background-color: #FFFFFF;
+  border: none;
+  border-bottom: 1px solid #E5E5E5;
+  font: 11px Verdana, Geneva, sans-serif;
+  height: 50px;
+  margin-top: 0;
+  padding: 10px;
+  width: 350px;
+}
+#custom-demo .uploadifyError {
+  background-color: #FDE5DD !important;
+  border: none !important;
+  border-bottom: 1px solid #FBCBBC !important;
+}
+#custom-demo .uploadifyQueueItem .cancel {
+  float: right;
+}
+#custom-demo .uploadifyQueue .completed {
+  color: #C5C5C5;
+}
+#custom-demo .uploadifyProgress {
+  background-color: #E5E5E5;
+  margin-top: 10px;
+  width: 100%;
+}
+#custom-demo .uploadifyProgressBar {
+  background-color: #0099FF;
+  height: 3px;
+  width: 1px;
+}
+#custom-demo #custom-queue {
+  border: 1px solid #E5E5E5;
+  height: 213px;
+margin-bottom: 10px;
+  width: 370px;
+}				</style>
+
+{/literal}

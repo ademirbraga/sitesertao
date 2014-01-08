@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<table>
+    <name id="sis_perfil" label="SisPerfil" app="SisPerfil" access="54" />
+    <foreignKeys>
+	</foreignKeys>
+    <fields>
+		<name id="A.cod_perfil" tag="input" type="hidden" datatype="int" maxlength="10" label="Cod Perfil" required="1" />
+		<name id="A.nom_perfil" tag="input" type="input" datatype="varchar" maxlength="50" label="Nom Perfil" required="1" />
+    </fields>
+    <export>
+		<name id="cod_perfil" enabled="true" />
+		<name id="nom_perfil" enabled="true" /></export>	
+    <search>
+		<name id="cod_perfil" enabled="true" />
+		<name id="nom_perfil" enabled="true" /></search>
+    <action>
+        <name id="cadastrar" enabled="true" />
+        <name id="editar" enabled="true" />
+        <name id="excluir" enabled="true" />
+        <name id="cancelar" enabled="true" />
+        <name id="visualizar" enabled="true" />
+    </action>
+</table>

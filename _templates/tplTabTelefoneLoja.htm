@@ -1,0 +1,67 @@
+{$xxajax}
+<!-- BEGIN PAGE CONTAINER-->
+<div class="container-fluid">
+    <!-- BEGIN PAGE HEADER-->   
+    <div class="row-fluid">
+        <div class="span12">                
+            <h3 class="page-title">
+                Modulo {$NomeModulo}                
+            </h3>
+            <ul class="breadcrumb">
+                <li>
+                    <i class="icon-home"></i>
+                    <a href="index.html">Home</a> 
+                    <span class="icon-angle-right"></span>
+                </li>
+                <li>
+                    <a href="#">{$NomeModulo}</a>               
+                </li>
+               
+            </ul>
+        </div>
+    </div>
+    <!-- END PAGE HEADER-->
+   
+    <!-- BEGIN PAGE CONTENT-->   
+    <div class="row-fluid">
+        <div class="span12">
+            <!-- BEGIN VALIDATION STATES-->
+            <div class="portlet box green">
+                <div class="portlet-title">
+                    <h4><i class="icon-reorder"></i>Dados</h4>                    
+                </div>
+                <div class="portlet-body form">
+                    <!-- BEGIN FORM-->                     
+			<form id="frm_{$modulo}" name="frm_{$modulo}" action="#" method="post" class="form-horizontal">
+                            <input type="hidden" name="f_action" id="f_action" value="{$acao}" />
+			    <input type="hidden" name="f_mod" id="f_mod" value="{$modulo}" />                            
+				<input type="hidden" id="cod_telefone_loja" name="cod_telefone_loja" value="{$dados.cod_telefone_loja}">
+
+<div class="alert alert-error hide">
+        <button class="close" data-dismiss="alert"></button>                            
+        </div>
+        <div class="alert alert-success hide">
+            <button class="close" data-dismiss="alert"></button>                            
+        </div><div class="control-group">{if $Revenda eq 0}                          <label class="control-label">{$lng.txt_cod_equipe}</label>
+		<div class="controls">
+                                <select  {$display_form}  id="cod_equipe" name="cod_equipe"  maxlength="11" class="span6 m-wrap popovers" {if $TipAjuda[80]} data-content="{$TipAjuda[80]}" data-original-title="Dica" data-trigger="hover" data-placement="top" {/if}><option value=''>Selecione</option>{html_options options=$lstcod_equipe selected=$dados.cod_equipe}
+		</select><span {$display_info} class="text">{$dados.cod_equipe} </span></div>{else}
+	<input type="hidden" id="cod_equipe" name="cod_equipe" value="{$dados.cod_equipe}">
+	{/if}</div>	
+<div class="control-group">                          <label class="control-label">{$lng.txt_cod_tipo_telefone}</label>
+		<div class="controls">
+                                <select  {$display_form}  id="cod_tipo_telefone" name="cod_tipo_telefone"  maxlength="11" class="span6 m-wrap popovers" {if $TipAjuda[81]} data-content="{$TipAjuda[81]}" data-original-title="Dica" data-trigger="hover" data-placement="top" {/if}><option value=''>Selecione</option>{html_options options=$lstcod_tipo_telefone selected=$dados.cod_tipo_telefone}
+		</select><span {$display_info} class="text">{$dados.cod_tipo_telefone} </span></div></div>	
+<div class="control-group">                          <label class="control-label">{$lng.txt_des_nro_telefone}</label>
+		<div class="controls">
+                                    <input type="text"  {$display_form}  id="des_nro_telefone" name="des_nro_telefone" value="{$dados.des_nro_telefone}" maxlength="15" class="span6 m-wrap popovers" {if $TipAjuda[82]} data-content="{$TipAjuda[82]}" data-original-title="Dica" data-trigger="hover" data-placement="top" {/if}>
+		<span {$display_info} class="text">{$dados.des_nro_telefone} </span></div></div>	
+ 	 
+                </form> 
+                </div>
+            </div>
+            <!-- END VALIDATION STATES-->
+        </div>       
+    </div>
+    <!-- END PAGE CONTENT-->         
+</div>

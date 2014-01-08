@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<table>
+    <name id="sis_permissoes" label="SisPermissoes" app="SisPermissoes" access="55" />
+    <foreignKeys>
+	</foreignKeys>
+    <fields>
+		<name id="A.cod_permissao" tag="input" type="hidden" datatype="int" maxlength="10" label="Cod Permissao" required="1" />
+		<name id="A.dsc_permissao" tag="input" type="input" datatype="varchar" maxlength="50" label="Dsc Permissao" required="1" />
+    </fields>
+    <export>
+		<name id="cod_permissao" enabled="true" />
+		<name id="dsc_permissao" enabled="true" /></export>	
+    <search>
+		<name id="cod_permissao" enabled="true" />
+		<name id="dsc_permissao" enabled="true" /></search>
+    <action>
+        <name id="cadastrar" enabled="true" />
+        <name id="editar" enabled="true" />
+        <name id="excluir" enabled="true" />
+        <name id="cancelar" enabled="true" />
+        <name id="visualizar" enabled="true" />
+    </action>
+</table>

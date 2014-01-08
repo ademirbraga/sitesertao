@@ -1,0 +1,116 @@
+{$xxajax}
+<!-- BEGIN PAGE CONTAINER-->
+<div class="container-fluid">
+    <!-- BEGIN PAGE HEADER-->   
+    <div class="row-fluid">
+        <div class="span12">                
+            <h3 class="page-title">
+                Modulo {$NomeModulo}                
+            </h3>
+            <ul class="breadcrumb">
+                <li>
+                    <i class="icon-home"></i>
+                    <a href="index.html">Home</a> 
+                    <span class="icon-angle-right"></span>
+                </li>
+                <li>
+                    <a href="#">{$NomeModulo}</a>               
+                </li>
+               
+            </ul>
+        </div>
+    </div>
+    <!-- END PAGE HEADER-->
+    <!-- BEGIN PAGE CONTENT-->   
+    <div class="row-fluid">
+        <div class="span12">
+            <!-- BEGIN VALIDATION STATES-->
+            <div class="portlet box green">
+                <div class="portlet-title">
+                    <h4><i class="icon-reorder"></i>Dados</h4>                    
+                </div>
+                <div class="portlet-body form">
+                    <!-- BEGIN FORM-->                     
+			<form id="frm_{$modulo}" name="frm_{$modulo}" action="#" method="post" class="form-horizontal">
+                            <input type="hidden" name="f_action" id="f_action" value="{$acao}" />
+			    <input type="hidden" name="f_mod" id="f_mod" value="{$modulo}" />                            
+				<input type="hidden" id="cod_perfil" name="cod_perfil" value="{$dados.cod_perfil}">
+				<input type="hidden" id="cod_equipe" name="cod_equipe" value="{$dados.cod_equipe}">
+
+				<div class="alert alert-error hide">
+				<button class="close" data-dismiss="alert"></button>                            
+				</div>
+				<div class="alert alert-success hide">
+				    <button class="close" data-dismiss="alert"></button>                            
+				</div>	
+				
+				<div class="control-group">
+				    <label class="control-label">{$lng.txt_nom_perfil}<span class="required">*</span> </label>
+				    <div class="controls">
+					<input type="text"  {$display_form}  id="nom_perfil" name="nom_perfil" value="{$dados.nom_perfil}" maxlength="225" data-required="1" class="span6 m-wrap popovers required" {if $TipAjuda[93]} data-content="{$TipAjuda[93]}" data-original-title="Dica" data-trigger="hover" data-placement="top" data-trigger="hover" data-placement="top" {/if}>
+				    <span {$display_info} class="text">{$dados.nom_perfil} </span>
+				    </div>
+				</div>				
+				
+			<table class="table table-condensed table-hover">
+			<tr>
+			    <td colspan="5">
+				<table class="table table-condensed table-hover">
+				<tr>
+				    <td></td>
+				    {foreach from=$lstAcoes item=itAcoes}
+				    <td>{$itAcoes}</td>
+				    {/foreach}
+				    <td>{$lng.txt_todas}</td>
+				</tr>
+
+				{foreach from=$lstPerm item=itPerm key=chPerm}
+				<tr id="tr{$chPerm}">
+				    <td>{$itPerm}</td>
+				    {foreach from=$lstAcoes item=itAcoes key=chAcoes}
+				    <td>
+					{if $lstPermAcoes.$chPerm.$chAcoes}
+					<input type="checkbox" id="cod_permissao_{$chPerm}_{$chAcoes}" name="cod_permissao[{$chPerm}][{$chAcoes}]" value="{$chAcoes}" {if $lstPermissoes[$chPerm] & $chAcoes} checked="checked"{/if} />
+					{/if}
+				    </td>
+				    {/foreach}
+				    <td>
+					<input type="checkbox" name="todos_{$chPerm}" id="todos_{$chPerm}" onclick="javascript: selTodas({$chPerm});" >
+				    </td>
+				</tr>
+				{/foreach}
+				</table>
+			    </td>
+			</tr>
+		    </table>
+				
+		</form> 
+                </div>
+            </div>
+            <!-- END VALIDATION STATES-->
+        </div>       
+    </div>
+    <!-- END PAGE CONTENT-->         
+</div>
+{literal}
+<script language="javascript">
+function selTodas(idPerm){
+	
+	var Marca = false;
+
+	if($("#todos_"+idPerm).is(':checked')) 
+	    Marca = true;
+
+	var lstChecks = $( "#tr"+idPerm ).find( ":checkbox" );
+
+	$.each(lstChecks, function(index, value) {	  
+	    //alert('#cod_permissao_'+idPerm+'_'+$(value).val());	    
+	  //  var campo = $('#cod_permissao_'+idPerm+'_'+$(value).val());	  
+	  $(value).attr('checked', Marca);
+	  //$('#'+value).attr( "alt", "Beijing Brush Seller" );
+	  //alert(campo);
+	  //$('#cod_permissao_'+idPerm+'_'+$(value).val()).attr('checked');
+	});
+}
+</script>
+{/literal}

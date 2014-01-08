@@ -1,0 +1,151 @@
+{$xxajax}
+<!-- BEGIN PAGE CONTAINER-->
+<div class="container-fluid">
+    <!-- BEGIN PAGE HEADER-->   
+    <div class="row-fluid">
+        <div class="span12">                
+            <h3 class="page-title">
+                Modulo {$NomeModulo}                
+            </h3>
+            <ul class="breadcrumb">
+                <li>
+                    <i class="icon-home"></i>
+                    <a href="index.html">Home</a> 
+                    <span class="icon-angle-right"></span>
+                </li>
+                <li>
+                    <a href="#">{$NomeModulo}</a>               
+                </li>
+               
+            </ul>
+        </div>
+    </div>
+    <!-- END PAGE HEADER-->
+   
+    <!-- BEGIN PAGE CONTENT-->   
+    <div class="row-fluid">
+        <div class="span12">
+            <!-- BEGIN VALIDATION STATES-->
+            <div class="portlet box green">
+                <div class="portlet-title">
+                    <h4><i class="icon-reorder"></i>Dados</h4>                    
+                </div>
+                <div class="portlet-body form">
+                    <!-- BEGIN FORM-->                     
+			<form id="frm_{$modulo}" name="frm_{$modulo}" action="#" method="post" class="form-horizontal">
+                            <input type="hidden" name="f_action" id="f_action" value="{$acao}" />
+			    <input type="hidden" name="f_mod" id="f_mod" value="{$modulo}" />                            
+			    <input type="hidden" id="cod_enquete" name="cod_enquete" value="{$dados.cod_enquete}">
+
+			    <div class="alert alert-error hide">
+			    <button class="close" data-dismiss="alert"></button>                            
+			    </div>
+			    <div class="alert alert-success hide">
+				<button class="close" data-dismiss="alert"></button>                            
+			    </div>
+			    
+			    <div class="control-group">
+				<label class="control-label">{$lng.txt_nom_perfil}<span class="required">*</span></label>
+				<div class="controls">
+				   <select {$display_form} id="cod_perfil[]" name="cod_perfil[]"  maxlength="11" data-required="1" tabindex="1" data-placeholder="Selecione" multiple="multiple" class="span6 m-wrap required">
+				      {html_options options=$lstcod_perfil selected=$dados.cod_perfil}
+				   </select>
+				</div>
+			     </div>
+			    
+			    <div class="control-group">                          
+				<label class="control-label">{$lng.txt_nom_titulo_enquete}<span class="required">*</span> </label>
+				<div class="controls">
+				    <input type="text"  {$display_form}  id="nom_titulo" name="nom_titulo" value="{$dados.nom_titulo}" maxlength="225" data-required="1" class="span6 m-wrap popovers required" {if $TipAjuda[75]} data-content="{$TipAjuda[75]}" data-original-title="Dica" data-trigger="hover" data-placement="top" data-trigger="hover" data-placement="top" {/if}>
+				<span {$display_info} class="text">{$dados.nom_titulo} </span>
+				</div>	
+			    </div>
+			    
+			    <div class="control-group">                          
+				<label class="control-label">{$lng.txt_nom_enquete_alternativa}<span class="required">*</span> </label>
+				<div class="controls">
+                                    1 - <input type="text"  {$display_form}  id="nom_enquete_alternativa_0" name="nom_enquete_alternativa[0]" value="{$dados.nom_enquete_alternativa[0]}" maxlength="125" data-required="1" class="span6 m-wrap popovers required" {if $TipAjuda[80]} data-content="{$TipAjuda[80]}" data-original-title="Dica" data-trigger="hover" data-placement="top" data-trigger="hover" data-placement="top" {/if}><input type="hidden" id="cod_enquete_alternativa" name="cod_enquete_alternativa[0]" value="{$dados.cod_enquete_alternativa[0]}"><br>
+				    2 - <input type="text"  {$display_form}  id="nom_enquete_alternativa_1" name="nom_enquete_alternativa[1]" value="{$dados.nom_enquete_alternativa[1]}" maxlength="125" data-required="1" class="span6 m-wrap popovers required"><input type="hidden" id="cod_enquete_alternativa" name="cod_enquete_alternativa[1]" value="{$dados.cod_enquete_alternativa[1]}"><br>
+				    3 - <input type="text"  {$display_form}  id="nom_enquete_alternativa_2" name="nom_enquete_alternativa[2]" value="{$dados.nom_enquete_alternativa[2]}" maxlength="125" data-required="1" class="span6 m-wrap popovers "><input type="hidden" id="cod_enquete_alternativa" name="cod_enquete_alternativa[2]" value="{$dados.cod_enquete_alternativa[2]}"><br>
+				    4 - <input type="text"  {$display_form}  id="nom_enquete_alternativa_3" name="nom_enquete_alternativa[3]" value="{$dados.nom_enquete_alternativa[3]}" maxlength="125" data-required="1" class="span6 m-wrap popovers "><input type="hidden" id="cod_enquete_alternativa" name="cod_enquete_alternativa[3]" value="{$dados.cod_enquete_alternativa[3]}"><br>
+				    5 - <input type="text"  {$display_form}  id="nom_enquete_alternativa_4" name="nom_enquete_alternativa[4]" value="{$dados.nom_enquete_alternativa[4]}" maxlength="125" data-required="1" class="span6 m-wrap popovers "><input type="hidden" id="cod_enquete_alternativa" name="cod_enquete_alternativa[4]" value="{$dados.cod_enquete_alternativa[4]}"><br>
+				    <span {$display_info} class="text">{$dados.nom_enquete_alternativa} </span>
+				</div>	
+			    </div>
+			    
+			    <div class="control-group">                          
+				<label class="control-label">{$lng.txt_dat_inicio}<span class="required">*</span></label>
+				<div class="controls">
+				    <div class="input-prepend date date-picker" data-date="{$dados.dat_inicio|date_format:'%d/%m/%Y'}" data-date-format="dd/mm/yyyy" data-date-viewmode="years" {$display_form}>
+					<span class="add-on" ><i class="icon-calendar"></i></span><input class="m-wrap m-ctrl-medium required" size="16" type="text" id="dat_inicio" name="dat_inicio" value="{$dados.dat_inicio|date_format:'%d/%m/%Y'}" />
+				    </div>                                
+				    <span {$display_info} class="text">{$dados.dat_inicio|date_format:"%d/%m/%Y"} </span>
+				</div>
+			    </div>	
+			    <div class="control-group">
+				    <label class="control-label">{$lng.txt_dat_finalizado}</label>
+				    <div class="controls">					
+					<div class="input-prepend date date-picker" data-date="{$dados.dat_finalizado|date_format:'%d/%m/%Y'}" data-date-format="dd/mm/yyyy" data-date-viewmode="years" data-date-startdate="{$smarty.now|date_format:'%d/%m/%Y'}" {$display_form}>
+					    <span class="add-on" ><i class="icon-calendar"></i></span><input class="m-wrap m-ctrl-medium" size="16" type="text" id="dat_finalizado" name="dat_finalizado" value="{$dados.dat_finalizado|date_format:'%d/%m/%Y'}" />
+					</div>
+    				    <span {$display_info} class="text">{$dados.dat_finalizado|date_format:"%d/%m/%Y %T"} </span>
+					
+				    </div>
+				</div>	
+
+			    <div class="control-group">
+				<label class="control-label">{$lng.txt_dat_cadastro}<span class="required">*</span> </label>
+				<div class="controls">
+				    <span class="text">{if $dados.dat_cadastro eq ''}{$smarty.now|date_format:"%d/%m/%Y %T"}{else}{$dados.dat_cadastro|date_format:"%d/%m/%Y %T"}{/if}</span>
+				</div>
+			    </div>
+			    
+			    {if $Revenda eq 0}
+				<div class="control-group">				    
+				    <label class="control-label">{$lng.txt_cod_usuario}<span class="required">*</span> </label>
+				    <div class="controls">
+					<select {$display_form} id="cod_usuario" name="cod_usuario"  maxlength="11" data-required="1" class="span6 m-wrap popovers required" {if $TipAjuda[158]} data-content="{$TipAjuda[158]}" data-original-title="Dica" data-trigger="hover" data-placement="top" data-trigger="hover" data-placement="top" {/if}>
+					    <option value=''>Selecione</option>
+					    {html_options options=$lstcod_usuario selected=$dados.cod_usuario}
+					</select>
+					<span {$display_info} class="text">{$dados.nom_usuario} </span>					
+				    </div>
+				</div>
+				{else}
+				    <input type="hidden" id="cod_usuario" name="cod_usuario" value="{$smarty.session.usr.cod_usuario}">
+				{/if}
+			    
+ 	 
+                </form> 
+                </div>
+            </div>
+            <!-- END VALIDATION STATES-->
+        </div>       
+    </div>
+    <!-- END PAGE CONTENT-->         
+</div>
+{literal}
+<script>
+    $("#dat_finalizado,#dat_inicio").live("blur", function(){ 
+            
+            var dias = 0;            
+            alert('Validando datas...');
+            
+            var date2 = new String($("#dat_inicio").val());
+            date2 = date2.split("/");        
+            var eDate = new Date(date2[1]+"/"+date2[0]+"/"+date2[2]);
+            
+            var date1 = new String($("#dat_finalizado").val());
+            date1 = date1.split("/");
+            var sDate = new Date(date1[1]+"/"+date1[0]+"/"+date1[2]);
+
+            dias = Math.round((sDate-eDate)/86400000);
+            if(dias <= 0 ){
+                alert('Favor preencher as datas corretas. O campo data finalizado deve ser maior que a data de inicio.');
+                $("#dat_inicio").val('');
+                $("#dat_finalizado").val('');
+            }      
+        
+    });
+</script>
+{/literal}

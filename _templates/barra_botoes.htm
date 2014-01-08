@@ -1,0 +1,8 @@
+<div class="span12">    
+        {if $acao != 1}    
+        <button type="button" class="btn blue" onclick="javascript: {literal}if($('#frm_{/literal}{$modulo}{literal}').valid()) { FORM.enviaFrm('frm_{/literal}{$modulo}{literal}', 'new', this); return false;} else return false; {/literal} ">Salvar e adicionar outro</button>
+        <button type="button" class="btn green" onclick="javascript: {literal}if($('#frm_{/literal}{$modulo}{literal}').valid()) { FORM.enviaFrm('frm_{/literal}{$modulo}{literal}', 'edit', this); return false;} else return false; {/literal} ">Salvar e continuar editando</button>
+        <button type="button" class="btn purple" onclick="javascript: {literal}if($('#frm_{/literal}{$modulo}{literal}').valid()) { FORM.enviaFrm('frm_{/literal}{$modulo}{literal}', 'redirect', this); return false;} else return false; {/literal} ">Salvar</button>        
+        {/if}
+        <button type="button" class="btn" onclick="javascript:history.go(-1);">Voltar</button>        
+</div>

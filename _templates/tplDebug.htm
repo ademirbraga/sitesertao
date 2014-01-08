@@ -1,0 +1,20 @@
+<div align="center">
+{if $debug eq 0}
+<form id="frmDebug" name="frmDebug" action="#" method="post">
+	<div>
+		   <b>Debug</b>:
+		   <br />
+		   <input type="checkbox" name="nivel[]" id="nivel[]" value="1"> INFO
+		   <input type="checkbox" name="nivel[]" id="nivel[]" value="2"> ERRO
+		   <input type="checkbox" name="nivel[]" id="nivel[]" value="4"> SQL
+		  
+		   <br />		
+		   <b>Senha:</b> <input class="required" type="password" name="nom_senha" id="nom_senha">	
+  		   <a href="javascript:void(0)" id="prosseguir" onClick="axSetDebug('frmDebug');" >Prosseguir</a>
+		
+	</div>
+</form>
+{else}
+Debug desativado.
+{/if}
+</div>

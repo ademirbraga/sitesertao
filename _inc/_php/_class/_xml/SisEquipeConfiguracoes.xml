@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<table>
+    <name id="sis_equipe_configuracoes" label="SisEquipeConfiguracoes" app="SisEquipeConfiguracoes" access="53" />
+    <foreignKeys>
+			<name id="cod_equipe" class="SisEquipe" label="Cod Equipe" key="cod_equipe" />
+			<name id="cod_tipo_param_voicemail" class="TipoParamVoicemail" label="Cod Tipo Param Voicemail" key="cod_tipo_param_voicemail" />
+	</foreignKeys>
+    <fields>
+		<name id="A.cod_equipe" tag="select" type="hidden" datatype="int" maxlength="10" label="Cod Equipe" required="1" />
+		<name id="A.nom_logo" tag="input" type="input" datatype="varchar" maxlength="100" label="Nom Logo" required="1" />
+		<name id="A.val_mensalidade" tag="input" type="input" datatype="decimal" maxlength="12,4" label="Val Mensalidade" required="1" />
+		<name id="A.cod_tipo_param_voicemail" tag="select" type="select" datatype="int" maxlength="11" label="Cod Tipo Param Voicemail" required="1" />
+    </fields>
+    <export>
+		<name id="cod_equipe" enabled="true" />
+		<name id="nom_logo" enabled="true" />
+		<name id="val_mensalidade" enabled="true" />
+		<name id="cod_tipo_param_voicemail" enabled="true" /></export>	
+    <search>
+		<name id="cod_equipe" enabled="true" />
+		<name id="nom_logo" enabled="true" />
+		<name id="val_mensalidade" enabled="true" />
+		<name id="cod_tipo_param_voicemail" enabled="true" /></search>
+    <action>
+        <name id="cadastrar" enabled="true" />
+        <name id="editar" enabled="true" />
+        <name id="excluir" enabled="true" />
+        <name id="cancelar" enabled="true" />
+        <name id="visualizar" enabled="true" />
+    </action>
+</table>

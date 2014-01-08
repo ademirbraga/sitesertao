@@ -1,0 +1,21 @@
+<html>
+<body>
+{foreach from=$grafico[0].css_include item=item key=key}
+    <link rel="stylesheet" href="{$item}" type="text/css" />
+{/foreach}
+
+{foreach from=$grafico[0].js_include item=item key=key}
+    <script type="text/javascript" src="{$item}" ></script>
+{/foreach}
+<script type="text/javascript">
+{foreach from=$grafico[0].js_header item=item key=key}
+    {$item}
+{/foreach}
+{$grafico[0].grafico}
+</script>
+<div style="text-align:center">
+    <div id="divGrafico" style="width:{$grafico[0].width},height:{$grafico[0].height};text-align:center;" ></div>
+    <div id="legenda"></div>
+</div>
+</body>
+</html>

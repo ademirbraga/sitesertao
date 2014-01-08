@@ -1,0 +1,20 @@
+@charset "utf-8";
+/* CSS Document */
+#container { padding-bottom:100px !important; }
+#content_table { bottom:200px; padding-top:0 !important; }
+label.error { background:url(../../_img/warning16x16.png) left center no-repeat; padding-left:20px; color:#F00 !important;}
+.principal label { color:#000; font-size:12px; padding-right:15px; }
+.principal input { padding:0px 8px; line-height:24px; color:#27292A; margin:0px 2px; font-size:12px; height:25px; border:1px solid #dadada; -webkit-border-radius: 8px; -moz-border-radius: 8px; border-radius: 8px; }
+.principal select { color:#27292A; font-size:12px; height:25px; padding:2px 9px 2px 5px; height:25px; border:1px solid #dadada; -webkit-border-radius: 8px; -moz-border-radius: 8px; border-radius: 8px; background: none repeat scroll 0 0 white; }
+.principal td { padding:5px;}
+.principal td:first-child { width:35%; }
+/*#content_table .principal td:first-child + td { width:30%; }*/
+.principal td table td { width:auto !important; }
+.bar_bottom #form-button-back {margin-right:310px; background:#Ff6600;}
+.bar_bottom { height:53px; width:100%; position:fixed; z-index:1000; background:url(../../_img/bar.png); bottom:-1px;}
+.bar_bottom .buttons_full { width:905px; margin:0 auto; }
+.bar_bottom .buttons { float:right; height:53px; width:900px; padding-top:20px;}
+.bar_bottom .buttons a { color:#fff; background:#00CF00; padding:2px 8px; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; margin:0px 4px; }
+.bar_bottom .buttons a:hover {background:#27292A; color:#fff; }
+.bar_bottom #buttons_right { float:right;}
+.help{ width:16px; height:16px; }

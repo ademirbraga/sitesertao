@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<table>
+    <name id="tab_plano_propriedades" label="TabPlanoPropriedades" app="TabPlanoPropriedades" access="12" />
+    <foreignKeys>
+	<name id="cod_equipe" class="SisEquipe" label="Cod Equipe" key="cod_equipe" />
+			<name id="cod_plano_contas" class="TabPlanoContas" label="Cod Plano Contas" key="cod_plano_contas" />
+			<name id="cod_tipo_servico" class="TabTipoServico" label="Cod Tipo Servico" key="cod_tipo_servico" />
+	</foreignKeys>
+    <fields>
+		<name id="A.cod_plano_propriedade" tag="input" type="hidden" datatype="int" maxlength="11" label="Cod Plano Propriedade" required="1" />
+		<name id="A.cod_equipe" tag="select" type="select" datatype="int" maxlength="11" label="Cod Equipe" required="1" />
+		<name id="A.cod_plano_contas" tag="select" type="select" datatype="int" maxlength="11" label="Cod Plano Contas" required="0" />
+		<name id="A.cod_tipo_servico" tag="select" type="select" datatype="int" maxlength="11" label="Cod Tipo Servico" required="0" />
+		<name id="A.qtd_itens_servico" tag="input" type="input" datatype="int" maxlength="11" label="Qtd Itens Servico" required="0" />
+		<name id="A.vlr_plano" tag="input" type="input" datatype="decimal" maxlength="10,2" label="Vlr Plano" required="0" />
+		<name id="A.dat_inicio_plano" tag="input" type="input" datatype="datetime" maxlength="60" label="Dat Inicio Plano" required="0" />
+		<name id="A.dat_fim_plano" tag="input" type="input" datatype="datetime" maxlength="60" label="Dat Fim Plano" required="0" />
+		<name id="A.bol_ativo" tag="checkbox" type="checkbox" datatype="tinyint" maxlength="4" label="Bol Ativo" required="1" />
+		<name id="A.dat_cadastro" tag="input" type="input" datatype="timestamp" maxlength="60" label="Dat Cadastro" required="1" />
+		<name id="A.dat_termino" tag="input" type="input" datatype="timestamp" maxlength="60" label="Dat Termino" required="0" />
+    </fields>
+    <export>
+		<name id="cod_plano_propriedade" disabled="true" />
+		<name id="cod_equipe" disabled="true" />
+		<name id="cod_plano_contas" disabled="true" />
+		<name id="cod_tipo_servico" disabled="true" />
+		<name id="qtd_itens_servico" disabled="true" />
+		<name id="vlr_plano" disabled="true" />
+		<name id="dat_inicio_plano" disabled="true" />
+		<name id="dat_fim_plano" disabled="true" />
+		<name id="bol_ativo" disabled="true" />
+		<name id="dat_cadastro" disabled="true" />
+		<name id="dat_termino" disabled="true" /></export>	
+    <search>
+		<name id="cod_plano_propriedade" disabled="true" />
+		<name id="cod_equipe" disabled="true" />
+		<name id="cod_plano_contas" disabled="true" />
+		<name id="cod_tipo_servico" disabled="true" />
+		<name id="qtd_itens_servico" disabled="true" />
+		<name id="vlr_plano" disabled="true" />
+		<name id="dat_inicio_plano" disabled="true" />
+		<name id="dat_fim_plano" disabled="true" />
+		<name id="bol_ativo" disabled="true" />
+		<name id="dat_cadastro" disabled="true" />
+		<name id="dat_termino" disabled="true" /></search>
+    <action>
+        <name id="cadastrar" disabled="true" />
+        <name id="editar" disabled="true" />
+        <name id="excluir" disabled="true" />
+        <name id="cancelar" disabled="true" />
+        <name id="visualizar" disabled="false" />
+    </action>
+</table>

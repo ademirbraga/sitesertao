@@ -1,0 +1,27 @@
+
+{literal}
+<script language="javascript" type="text/javascript">
+</script>
+{/literal}
+<div id="content_table"> <!-- Tabela de registros -->
+	<form id="frm_{$modulo}" name="frm_{$modulo}" action="#" method="post">
+		<input type="hidden" name="f_action" id="f_action" value="{$acao}" />
+ 		<input type="hidden" name="f_mod" id="f_mod" value="{$modulo}" />
+					<input type="hidden" id="cod_perfil" name="cod_perfil" value="{$dados.cod_perfil}" />
+<input type="hidden" id="cod_permissao" name="cod_permissao" value="{$dados.cod_permissao}" />
+
+		<table>
+			<tr>
+				<td><label for="num_nivel_permissao" class="requiredLabel">{$lng.txt_num_nivel_permissao}</label></td>
+				<td><input type='text' {$display_form} alt="integer" id="num_nivel_permissao" name="num_nivel_permissao" value="{$dados.num_nivel_permissao}" maxlength="11" class="form-text required" />	<label class="info" {$display_info} title="Clique para Editar" >&nbsp;{$dados.num_nivel_permissao} </label></td>
+				<td>{if $TipAjuda[1274]}<img src="../_img/help.png" width="24px" height="24px" alt="ajuda" onmouseover="Tip('{$TipAjuda[1274]}')" onmouseout="UnTip()" class="help"/>{/if}</td>
+			</tr>
+
+	</table>
+    <span id="msgbox" style="display:none"></span>
+    </form>                	
+</div>
+<div class="clr"></div>{literal}
+<script> 
+</script>
+{/literal}

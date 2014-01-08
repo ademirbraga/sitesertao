@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<table>
+    <name id="tab_envio_sms" label="TabEnvioSms" app="TabEnvioSms" access="9" />
+    <foreignKeys>
+	<name id="cod_sms" class="TabSms" label="Cod Sms" key="cod_sms" />
+			<name id="cod_pessoa" class="TabPessoa" label="Cod Pessoa" key="cod_pessoa" />
+	</foreignKeys>
+    <fields>
+		<name id="A.cod_sms" tag="select" type="select" datatype="int" maxlength="11" label="Cod Sms" required="0" />
+		<name id="A.cod_pessoa" tag="select" type="select" datatype="int" maxlength="11" label="Cod Pessoa" required="0" />
+		<name id="A.bol_enviada_sucesso" tag="checkbox" type="checkbox" datatype="tinyint" maxlength="4" label="Bol Enviada Sucesso" required="0" />
+    </fields>
+    <export>
+		<name id="cod_sms" disabled="true" />
+		<name id="cod_pessoa" disabled="true" />
+		<name id="bol_enviada_sucesso" disabled="true" /></export>	
+    <search>
+		<name id="cod_sms" disabled="true" />
+		<name id="cod_pessoa" disabled="true" />
+		<name id="bol_enviada_sucesso" disabled="true" /></search>
+    <action>
+        <name id="cadastrar" disabled="true" />
+        <name id="editar" disabled="true" />
+        <name id="excluir" disabled="true" />
+        <name id="cancelar" disabled="true" />
+        <name id="visualizar" disabled="false" />
+    </action>
+</table>

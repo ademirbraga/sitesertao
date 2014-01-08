@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<table>
+    <name id="tab_envio_email" label="TabEnvioEmail" app="TabEnvioEmail" access="8" />
+    <foreignKeys>
+	<name id="cod_email" class="TabEmail" label="Cod Email" key="cod_email" />
+	</foreignKeys>
+    <fields>
+		<name id="A.cod_email" tag="select" type="select" datatype="int" maxlength="11" label="Cod Email" required="0" />
+		<name id="A.cod_email_pessoa" tag="input" type="input" datatype="int" maxlength="11" label="Cod Email Pessoa" required="0" />
+		<name id="A.dat_envio" tag="input" type="input" datatype="datetime" maxlength="60" label="Dat Envio" required="0" />
+		<name id="A.bol_enviado" tag="checkbox" type="checkbox" datatype="tinyint" maxlength="4" label="Bol Enviado" required="0" />
+    </fields>
+    <export>
+		<name id="cod_email" disabled="true" />
+		<name id="cod_email_pessoa" disabled="true" />
+		<name id="dat_envio" disabled="true" />
+		<name id="bol_enviado" disabled="true" /></export>	
+    <search>
+		<name id="cod_email" disabled="true" />
+		<name id="cod_email_pessoa" disabled="true" />
+		<name id="dat_envio" disabled="true" />
+		<name id="bol_enviado" disabled="true" /></search>
+    <action>
+        <name id="cadastrar" disabled="true" />
+        <name id="editar" disabled="true" />
+        <name id="excluir" disabled="true" />
+        <name id="cancelar" disabled="true" />
+        <name id="visualizar" disabled="false" />
+    </action>
+</table>

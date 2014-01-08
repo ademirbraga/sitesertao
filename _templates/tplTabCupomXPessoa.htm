@@ -1,0 +1,68 @@
+{$xxajax}
+<!-- BEGIN PAGE CONTAINER-->
+<div class="container-fluid">
+    <!-- BEGIN PAGE HEADER-->   
+    <div class="row-fluid">
+        <div class="span12">                
+            <h3 class="page-title">
+                Modulo {$NomeModulo}                
+            </h3>
+            <ul class="breadcrumb">
+                <li>
+                    <i class="icon-home"></i>
+                    <a href="index.html">Home</a> 
+                    <span class="icon-angle-right"></span>
+                </li>
+                <li>
+                    <a href="#">{$NomeModulo}</a>               
+                </li>
+               
+            </ul>
+        </div>
+    </div>
+    <!-- END PAGE HEADER-->
+   
+    <!-- BEGIN PAGE CONTENT-->   
+    <div class="row-fluid">
+        <div class="span12">
+            <!-- BEGIN VALIDATION STATES-->
+            <div class="portlet box green">
+                <div class="portlet-title">
+                    <h4><i class="icon-reorder"></i>Dados</h4>                    
+                </div>
+                <div class="portlet-body form">
+                    <!-- BEGIN FORM-->                     
+			<form id="frm_{$modulo}" name="frm_{$modulo}" action="#" method="post" class="form-horizontal">
+                            <input type="hidden" name="f_action" id="f_action" value="{$acao}" />
+			    <input type="hidden" name="f_mod" id="f_mod" value="{$modulo}" />                            
+				
+<div class="alert alert-error hide">
+        <button class="close" data-dismiss="alert"></button>                            
+        </div>
+        <div class="alert alert-success hide">
+            <button class="close" data-dismiss="alert"></button>                            
+        </div><div class="control-group">                          <label class="control-label">{$lng.txt_cod_cupom}</label>
+		<div class="controls">
+                                <select  {$display_form}  id="cod_cupom" name="cod_cupom"  maxlength="11" class="span6 m-wrap popovers" {if $TipAjuda[14]} data-content="{$TipAjuda[14]}" data-original-title="Dica" data-trigger="hover" data-placement="top" {/if}><option value=''>Selecione</option>{html_options options=$lstcod_cupom selected=$dados.cod_cupom}
+		</select><span {$display_info} class="text">{$dados.cod_cupom} </span></div></div>	
+<div class="control-group">                          <label class="control-label">{$lng.txt_cod_pessoa}</label>
+		<div class="controls">
+                                <select  {$display_form}  id="cod_pessoa" name="cod_pessoa"  maxlength="11" class="span6 m-wrap popovers" {if $TipAjuda[15]} data-content="{$TipAjuda[15]}" data-original-title="Dica" data-trigger="hover" data-placement="top" {/if}><option value=''>Selecione</option>{html_options options=$lstcod_pessoa selected=$dados.cod_pessoa}
+		</select><span {$display_info} class="text">{$dados.cod_pessoa} </span></div></div>	
+<div class="control-group">                          <label class="control-label">{$lng.txt_bol_resgate}</label>
+		<div class="controls">
+                                    <input type='checkbox'  {$display_form}  id="bol_resgate" name="bol_resgate" value="{$dados.bol_resgate}" maxlength="4" class="span6 m-wrap popovers" {if $TipAjuda[16]} data-content="{$TipAjuda[16]}" data-original-title="Dica" data-trigger="hover" data-placement="top" {/if}>
+		<span {$display_info} class="text">{$dados.bol_resgate} </span></div></div>	
+<div class="control-group">                          <label class="control-label">{$lng.txt_dat_resgate}</label>
+		<div class="controls">
+                                    <input type="text"  {$display_form} alt="date" id="dat_resgate" name="dat_resgate" value="{$dados.dat_resgate}" maxlength="60" class="span6 m-wrap popovers" {if $TipAjuda[17]} data-content="{$TipAjuda[17]}" data-original-title="Dica" data-trigger="hover" data-placement="top" {/if}>
+		<span {$display_info} class="text">{$dados.dat_resgate} </span></div></div>	
+ 	 
+                </form> 
+                </div>
+            </div>
+            <!-- END VALIDATION STATES-->
+        </div>       
+    </div>
+    <!-- END PAGE CONTENT-->         
+</div>

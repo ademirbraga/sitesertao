@@ -1,0 +1,64 @@
+<div id="content_table"> <!-- Tabela de registros -->
+
+    <form id="frm_{$modulo}" name="frm_{$modulo}" class="principal" action="#" method="post">
+
+        <input type="hidden" name="f_action" id="f_action" value="{$acao}" />
+        <input type="hidden" name="f_mod" id="f_mod" value="{$modulo}" />
+        <input type="hidden" id="cod_perfil_painel" name="cod_perfil_painel" value="{$dados.cod_perfil_painel}" />
+
+        <table>
+            <tr>
+                    <td><label for="nom_perfil" class="requiredLabel">{$lng.txt_nom_perfil_painel}</label></td>
+                    <td><input type='text' {$display_form}  id="nom_perfil" name="nom_perfil" value="{$dados.nom_perfil}" maxlength="45" class="form-text required" />
+                    <label class="info" {$display_info} title="Clique para Editar" >&nbsp;{$dados.nom_perfil} </label>
+                    <td>{if $TipAjuda[1338]}<img src="../_img/help.png" width="24px" height="24px" alt="ajuda" onmouseover="Tip('{$TipAjuda[1338]}')" onmouseout="UnTip()" class="help"/>{/if}</td>
+            </tr>
+             <tr>
+            	<td colspan="3">
+                	<table class="tablecss">
+                    	<tr>
+                        	<td></td>
+                            {foreach from=$lstAcoes item=itAcoes}
+                            <td>{$itAcoes}</td>
+                            {/foreach}
+                            <td>{$lng.txt_todas}</td>
+                        </tr>
+                        {foreach from=$lstPerm item=itPerm key=chPerm}
+                        <tr id="Tr{$chPerm}">
+                        	<td>{$itPerm}</td>
+                            {foreach from=$lstAcoes item=itAcoes key=chAcoes}
+                            <td>{if $lstPermAcoes.$chPerm.$chAcoes}<input type="checkbox" id="cod_permissao_{$chPerm}_{$chAcoes}" name="cod_permissao[{$chPerm}][{$chAcoes}]" value="{$chAcoes}" {if $lstPermissoes[$chPerm] & $chAcoes} checked="checked"{/if} />{/if}</td>
+                            {/foreach}
+                            <td><input type="checkbox" name="todos_{$chPerm}" id="todos_{$chPerm}" onclick="selTodas({$chPerm});" ></td>
+                        </tr>
+                        {/foreach}
+                    </table>
+                </td>
+            </tr>
+
+        </table>
+
+        <span id="msgbox" style="display:none"></span>
+
+		
+
+    </form>
+
+</div>
+<div class="clr"></div>
+
+{literal}
+<script language="javascript">
+function selTodas(idPerm){
+	var Marca = false;
+	if($("#todos_"+idPerm).is(':checked'))
+		Marca = true;
+	var lstChecks = $( "#Tr"+idPerm ).find( ":checkbox" );
+	$.each(lstChecks, function(index, value) { 
+	  $(value).attr('checked', Marca);
+	});
+}
+
+toggleMenuPrincipal();
+</script>
+{/literal}

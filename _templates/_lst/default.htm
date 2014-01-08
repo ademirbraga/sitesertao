@@ -1,0 +1,10 @@
+{if $display_excluir || $display_cadastro}
+<div class="buttons_content">
+	{if $display_excluir}
+	<a id="remove_selected" href="javascript:delListData('{$modulo}')">Remover selecionados</a>
+	{/if}
+	{if $display_cadastro}
+	<a href="Visualiza.php?modulo={$modulo}&acao={$CADASTRAR}">Adicionar novo</a>
+	{/if}
+</div>
+{/if}

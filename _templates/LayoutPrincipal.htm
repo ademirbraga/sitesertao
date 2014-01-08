@@ -1,0 +1,36 @@
+{include file="incSuperior.htm"}
+<!-- BEGIN BODY -->
+<body class="fixed-top">
+
+    {include file="incTopo.htm"}
+
+    <!-- BEGIN CONTAINER -->
+    <div class="page-container row-fluid"> <!--<div id="container">-->
+
+        {include file="menu.htm"}
+
+        <!-- BEGIN PAGE CONTAINER-->
+        <div class="page-content">
+            {$tplConteudo}
+            {if $formulario}
+            {include file="barra_botoes.htm"}
+            {/if}
+        </div>
+        <!------------------------------ END PAGE -->    
+    </div>    
+
+    {include file="incInferior.htm"}
+
+    <div id="debug"  style="display:{if $isDebug > 0}block{else}none{/if}"> {$t_debug}{$debug}</div>
+
+</body>
+</html>
+{literal}
+<script >    
+    $(document).ready(function() {		
+        App.setPage("{/literal}{$SETPAGE}{literal}");  // set current page
+        App.init(); // init the rest of plugins and elements
+    });    
+   
+</script>
+{/literal}

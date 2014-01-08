@@ -1,0 +1,129 @@
+{$xxajax}
+<!-- BEGIN PAGE CONTAINER-->
+<div class="container-fluid">
+    <!-- BEGIN PAGE HEADER-->   
+    <div class="row-fluid">
+        <div class="span12">                
+            <h3 class="page-title">
+                Modulo {$NomeModulo}                
+            </h3>
+            <ul class="breadcrumb">
+                <li>
+                    <i class="icon-home"></i>
+                    <a href="index.html">Home</a> 
+                    <span class="icon-angle-right"></span>
+                </li>
+                <li>
+                    <a href="#">{$NomeModulo}</a>               
+                </li>
+               
+            </ul>
+        </div>
+    </div>
+    <!-- END PAGE HEADER-->
+   
+    <!-- BEGIN PAGE CONTENT-->   
+    <div class="row-fluid">
+        <div class="span12">
+            <!-- BEGIN VALIDATION STATES-->
+            <div class="portlet box green">
+                <div class="portlet-title">
+                    <h4><i class="icon-reorder"></i>Dados</h4>                    
+                </div>
+                <div class="portlet-body form">
+                    <!-- BEGIN FORM-->                     
+			<form id="frm_{$modulo}" name="frm_{$modulo}" action="#" method="post" class="form-horizontal">
+                            <input type="hidden" name="f_action" id="f_action" value="{$acao}" />
+			    <input type="hidden" name="f_mod" id="f_mod" value="{$modulo}" />                            
+				<input type="hidden" id="cod_transacao" name="cod_transacao" value="{$dados.cod_transacao}">
+
+				<div class="alert alert-error hide">
+				<button class="close" data-dismiss="alert"></button>                            
+				</div>
+				<div class="alert alert-success hide">
+				    <button class="close" data-dismiss="alert"></button>                            
+				</div>								
+
+				<div class="control-group">
+				    <label class="control-label">{$lng.txt_nom_pessoa}</label>
+				    <div class="controls">
+					<input type="text"  {$display_form} alt="integer" id="cod_pessoa" name="cod_pessoa" value="{$dados.cod_pessoa}" maxlength="11" class="span6 m-wrap popovers" {if $TipAjuda[87]} data-content="{$TipAjuda[87]}" data-original-title="Dica" data-trigger="hover" data-placement="top" {/if}>
+					<span {$display_info} class="text">{$dados.nom_pessoa} </span>
+				    </div>
+				</div>	
+
+				<div class="control-group">
+				    <label class="control-label">{$lng.txt_dat_compra}</label>
+				    <div class="controls">				    
+					    <div class="input-prepend date date-picker" data-date="{$dados.dat_compra|date_format:'%d/%m/%Y'}" data-date-format="dd/mm/yyyy" data-date-viewmode="years" data-date-startdate="{$dados.dat_compra|date_format:'%d/%m/%Y'}" {$display_form}>
+						<span class="add-on" ><i class="icon-calendar"></i></span><input class="m-wrap m-ctrl-medium" size="16" type="text" id="dat_compra" name="dat_compra" value="{$dados.dat_compra|date_format:'%d/%m/%Y'}" />
+					    </div>
+					    <span {$display_info} class="text">{$dados.dat_importacao|date_format:"%d/%m/%Y"} </span>
+				    </div>
+				</div>					
+
+				<div class="control-group">
+				    <label class="control-label">{$lng.txt_vlr_compra}</label>
+				    <div class="controls">
+					<input type="text"  {$display_form}  id="vlr_compra" name="vlr_compra" value="{$dados.vlr_compra}" maxlength="20,10" class="span6 m-wrap popovers" {if $TipAjuda[89]} data-content="{$TipAjuda[89]}" data-original-title="Dica" data-trigger="hover" data-placement="top" {/if}>
+					<span {$display_info} class="text">{$dados.vlr_compra} </span>
+				    </div>
+				</div>	
+
+				<div class="control-group">    
+				    <label class="control-label">{$lng.txt_nom_tipo_pagamento}</label>
+				    <div class="controls">					
+					<select  {$display_form}  id="nom_tipo_pagamento" name="nom_tipo_pagamento"  maxlength="11" class="span6 m-wrap popovers" ><option value=''>Selecione</option><option value='Cartao da loja'>Cartao da Loja</option><option value='Cartao de credito - Rotativo'>Cartao de Credito - Rotativo</option><option value='Cartao de credito - Parcelado'>Cartao de Credito - Parcelado</option><option value='Cartao de debito'>Cartao de debito</option><option value='Dinheiro'>Dinheiro</option><option value='Voucher'>Voucher</option><option value='Cheque'>Cheque</option><option value='Outros'>Outros</option></select>       
+					<span {$display_info} class="text">{$dados.nom_tipo_pagamento} </span>
+				    </div>
+				</div>	
+    
+
+			<div class="control-group">
+				<label class="control-label">{$lng.txt_dat_importacao}</label>
+				<div class="controls">				    
+					<div class="input-prepend date date-picker" data-date="{$dados.dat_importacao|date_format:'%d/%m/%Y'}" data-date-format="dd/mm/yyyy" data-date-viewmode="years" data-date-startdate="{$dados.dat_importacao|date_format:'%d/%m/%Y'}" {$display_form}>
+					    <span class="add-on" ><i class="icon-calendar"></i></span><input class="m-wrap m-ctrl-medium" size="16" type="text" id="dat_importacao" name="dat_importacao" value="{$dados.dat_importacao|date_format:'%d/%m/%Y'}" />
+					</div>
+					<span {$display_info} class="text">{$dados.dat_importacao|date_format:"%d/%m/%Y"} </span>
+				</div>
+			    </div>
+    
+			{if $Revenda eq 0}
+			<div class="control-group">				    
+			    <label class="control-label">{$lng.txt_nom_equipe}<span class="required">*</span> </label>
+			    <div class="controls">
+				<select {$display_form} id="cod_usuario" name="cod_equipe"  maxlength="11" data-required="1" class="span6 m-wrap popovers required" {if $TipAjuda[158]} data-content="{$TipAjuda[158]}" data-original-title="Dica" data-trigger="hover" data-placement="top" data-trigger="hover" data-placement="top" {/if}>
+				    <option value=''>Selecione</option>
+				    {html_options options=$lstcod_equipe selected=$dados.cod_equipe}
+				</select>
+				<span {$display_info} class="text">{$dados.nom_equipe} </span>					
+			    </div>
+			</div>
+			{else}
+			    <input type="hidden" id="cod_usuario" name="cod_usuario" value="{$smarty.session.usr.cod_usuario}">
+			{/if}    
+		
+			{if $Revenda eq 0}
+			<div class="control-group">				    
+			    <label class="control-label">{$lng.txt_cod_usuario}<span class="required">*</span> </label>
+			    <div class="controls">
+				<select {$display_form} id="cod_usuario" name="cod_usuario"  maxlength="11" data-required="1" class="span6 m-wrap popovers required" {if $TipAjuda[158]} data-content="{$TipAjuda[158]}" data-original-title="Dica" data-trigger="hover" data-placement="top" data-trigger="hover" data-placement="top" {/if}>
+				    <option value=''>Selecione</option>
+				    {html_options options=$lstcod_usuario selected=$dados.cod_usuario}
+				</select>
+				<span {$display_info} class="text">{$dados.nom_usuario} </span>					
+			    </div>
+			</div>
+			{else}
+			    <input type="hidden" id="cod_usuario" name="cod_usuario" value="{$smarty.session.usr.cod_usuario}">
+			{/if}
+ 	 
+                </form> 
+                </div>
+            </div>
+            <!-- END VALIDATION STATES-->
+        </div>       
+    </div>
+    <!-- END PAGE CONTENT-->         
+</div>

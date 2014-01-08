@@ -1,0 +1,95 @@
+{$xxajax}
+<!-- BEGIN PAGE CONTAINER-->
+<div class="container-fluid">
+    <!-- BEGIN PAGE HEADER-->   
+    <div class="row-fluid">
+        <div class="span12">                
+            <h3 class="page-title">
+                Modulo {$NomeModulo}                
+            </h3>
+            <ul class="breadcrumb">
+                <li>
+                    <i class="icon-home"></i>
+                    <a href="index.html">Home</a> 
+                    <span class="icon-angle-right"></span>
+                </li>
+                <li>
+                    <a href="#">{$NomeModulo}</a>               
+                </li>
+               
+            </ul>
+        </div>
+    </div>
+    <!-- END PAGE HEADER-->
+   
+    <!-- BEGIN PAGE CONTENT-->   
+    <div class="row-fluid">
+        <div class="span12">
+            <!-- BEGIN VALIDATION STATES-->
+            <div class="portlet box green">
+                <div class="portlet-title">
+                    <h4><i class="icon-reorder"></i>Dados</h4>                    
+                </div>
+                <div class="portlet-body form">
+                    <!-- BEGIN FORM-->                     
+			<form id="frm_{$modulo}" name="frm_{$modulo}" action="#" method="post" class="form-horizontal">
+                            <input type="hidden" name="f_action" id="f_action" value="{$acao}" />
+			    <input type="hidden" name="f_mod" id="f_mod" value="{$modulo}" />                            
+				<input type="hidden" id="cod_cupom" name="cod_cupom" value="{$dados.cod_cupom}">
+
+<div class="alert alert-error hide">
+        <button class="close" data-dismiss="alert"></button>                            
+        </div>
+        <div class="alert alert-success hide">
+            <button class="close" data-dismiss="alert"></button>                            
+        </div><div class="control-group">{if $Revenda eq 0}                          <label class="control-label">{$lng.txt_cod_usuario}</label>
+		<div class="controls">
+                                <select  {$display_form}  id="cod_usuario" name="cod_usuario"  maxlength="11" class="span6 m-wrap popovers" {if $TipAjuda[4]} data-content="{$TipAjuda[4]}" data-original-title="Dica" data-trigger="hover" data-placement="top" {/if}><option value=''>Selecione</option>{html_options options=$lstcod_usuario selected=$dados.cod_usuario}
+		</select><span {$display_info} class="text">{$dados.cod_usuario} </span></div>{else}
+	<input type="hidden" id="cod_usuario" name="cod_usuario" value="{$dados.cod_usuario}">
+	{/if}</div>	
+<div class="control-group">{if $Revenda eq 0}                          <label class="control-label">{$lng.txt_cod_equipe}</label>
+		<div class="controls">
+                                <select  {$display_form}  id="cod_equipe" name="cod_equipe"  maxlength="11" class="span6 m-wrap popovers" {if $TipAjuda[5]} data-content="{$TipAjuda[5]}" data-original-title="Dica" data-trigger="hover" data-placement="top" {/if}><option value=''>Selecione</option>{html_options options=$lstcod_equipe selected=$dados.cod_equipe}
+		</select><span {$display_info} class="text">{$dados.cod_equipe} </span></div>{else}
+	<input type="hidden" id="cod_equipe" name="cod_equipe" value="{$dados.cod_equipe}">
+	{/if}</div>	
+<div class="control-group">                          <label class="control-label">{$lng.txt_cod_status_cupom}</label>
+		<div class="controls">
+                                <select  {$display_form}  id="cod_status_cupom" name="cod_status_cupom"  maxlength="11" class="span6 m-wrap popovers" {if $TipAjuda[6]} data-content="{$TipAjuda[6]}" data-original-title="Dica" data-trigger="hover" data-placement="top" {/if}><option value=''>Selecione</option>{html_options options=$lstcod_status_cupom selected=$dados.cod_status_cupom}
+		</select><span {$display_info} class="text">{$dados.cod_status_cupom} </span></div></div>	
+<div class="control-group">                          <label class="control-label">{$lng.txt_nom_cupom}</label>
+		<div class="controls">
+                                    <input type="text"  {$display_form}  id="nom_cupom" name="nom_cupom" value="{$dados.nom_cupom}" maxlength="45" class="span6 m-wrap popovers" {if $TipAjuda[7]} data-content="{$TipAjuda[7]}" data-original-title="Dica" data-trigger="hover" data-placement="top" {/if}>
+		<span {$display_info} class="text">{$dados.nom_cupom} </span></div></div>	
+<div class="control-group">                          <label class="control-label">{$lng.txt_dat_cadastro}</label>
+<span {$display_info} class="text">{if $dados.dat_cadastro eq ''}{$smarty.now|date_format:"%d/%m/%Y %T"}{else}{$dados.dat_cadastro}{/if}</span></div>	
+<div class="control-group">                          <label class="control-label">{$lng.txt_dat_inicio_validade}</label>
+		<div class="controls">
+                                    <input type="text"  {$display_form} alt="date" id="dat_inicio_validade" name="dat_inicio_validade" value="{$dados.dat_inicio_validade}" maxlength="60" class="span6 m-wrap popovers" {if $TipAjuda[9]} data-content="{$TipAjuda[9]}" data-original-title="Dica" data-trigger="hover" data-placement="top" {/if}>
+		<span {$display_info} class="text">{$dados.dat_inicio_validade} </span></div></div>	
+<div class="control-group">                          <label class="control-label">{$lng.txt_dat_fim_validade}</label>
+		<div class="controls">
+                                    <input type="text"  {$display_form} alt="date" id="dat_fim_validade" name="dat_fim_validade" value="{$dados.dat_fim_validade}" maxlength="60" class="span6 m-wrap popovers" {if $TipAjuda[10]} data-content="{$TipAjuda[10]}" data-original-title="Dica" data-trigger="hover" data-placement="top" {/if}>
+		<span {$display_info} class="text">{$dados.dat_fim_validade} </span></div></div>	
+<div class="control-group">                          <label class="control-label">{$lng.txt_cod_tipo_cupom}</label>
+		<div class="controls">
+                                    <input type="text"  {$display_form} alt="integer" id="cod_tipo_cupom" name="cod_tipo_cupom" value="{$dados.cod_tipo_cupom}" maxlength="11" class="span6 m-wrap popovers" {if $TipAjuda[11]} data-content="{$TipAjuda[11]}" data-original-title="Dica" data-trigger="hover" data-placement="top" {/if}>
+		<span {$display_info} class="text">{$dados.cod_tipo_cupom} </span></div></div>	
+<div class="control-group">                          <label class="control-label">{$lng.txt_vlr_meta}</label>
+		<div class="controls">
+                                    <input type="text"  {$display_form}  id="vlr_meta" name="vlr_meta" value="{$dados.vlr_meta}" maxlength="10,2" class="span6 m-wrap popovers" {if $TipAjuda[12]} data-content="{$TipAjuda[12]}" data-original-title="Dica" data-trigger="hover" data-placement="top" {/if}>
+		<span {$display_info} class="text">{$dados.vlr_meta} </span></div></div>	
+<div class="control-group">                          <label class="control-label">{$lng.txt_vlr_resgate}</label>
+		<div class="controls">
+                                    <input type="text"  {$display_form}  id="vlr_resgate" name="vlr_resgate" value="{$dados.vlr_resgate}" maxlength="10,2" class="span6 m-wrap popovers" {if $TipAjuda[13]} data-content="{$TipAjuda[13]}" data-original-title="Dica" data-trigger="hover" data-placement="top" {/if}>
+		<span {$display_info} class="text">{$dados.vlr_resgate} </span></div></div>	
+ 	 
+                </form> 
+                </div>
+            </div>
+            <!-- END VALIDATION STATES-->
+        </div>       
+    </div>
+    <!-- END PAGE CONTENT-->         
+</div>

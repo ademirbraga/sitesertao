@@ -1,0 +1,16 @@
+Nessa pasta serão adicionados os arquivos de personalização para as listas que necessitarem.
+
+Exemplo: Lista de créditos não pode ter ação de remover
+Cria-se aqui um template para conter essa regra, que será carregada apenas na lista de créditos.
+
+Outro exemplo: A lista de débitos possui muitos campos e foi concluído que deveria iniciar com o menu lateral escondido
+para que a lista fique maior.
+Cria-se aqui um template que conterá a regra para que o menu seja fechado ao iniciar a lista de débito.
+Esse template será carregado apenas nessa lista.
+
+Para criar um template personalizado para uma lista utilize o padrão:
+$modulo.htm
+
+Ex:
+Para criar um template parcial personalizado para a lista de Débito cria-se nesse diretório o arquivo:
+10.htm

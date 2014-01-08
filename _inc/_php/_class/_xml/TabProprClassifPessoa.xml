@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<table>
+    <name id="tab_propr_classif_pessoa" label="TabProprClassifPessoa" app="TabProprClassifPessoa" access="13" />
+    <foreignKeys>
+	<name id="cod_classif_pessoa" class="TabClassifPessoa" label="Cod Classif Pessoa" key="cod_classif_pessoa" />
+	</foreignKeys>
+    <fields>
+		<name id="A.cod_propr_classif_pessoa" tag="input" type="hidden" datatype="int" maxlength="11" label="Cod Propr Classif Pessoa" required="1" />
+		<name id="A.cod_classif_pessoa" tag="select" type="select" datatype="int" maxlength="11" label="Cod Classif Pessoa" required="0" />
+		<name id="A.qtd_vendas" tag="input" type="input" datatype="int" maxlength="11" label="Qtd Vendas" required="0" />
+		<name id="A.vlr_vendas" tag="input" type="input" datatype="decimal" maxlength="10,2" label="Vlr Vendas" required="0" />
+		<name id="A.bol_ativo" tag="checkbox" type="checkbox" datatype="tinyint" maxlength="4" label="Bol Ativo" required="0" />
+		<name id="A.dat_cadastro" tag="input" type="input" datatype="datetime" maxlength="60" label="Dat Cadastro" required="0" />
+    </fields>
+    <export>
+		<name id="cod_propr_classif_pessoa" disabled="true" />
+		<name id="cod_classif_pessoa" disabled="true" />
+		<name id="qtd_vendas" disabled="true" />
+		<name id="vlr_vendas" disabled="true" />
+		<name id="bol_ativo" disabled="true" />
+		<name id="dat_cadastro" disabled="true" /></export>	
+    <search>
+		<name id="cod_propr_classif_pessoa" disabled="true" />
+		<name id="cod_classif_pessoa" disabled="true" />
+		<name id="qtd_vendas" disabled="true" />
+		<name id="vlr_vendas" disabled="true" />
+		<name id="bol_ativo" disabled="true" />
+		<name id="dat_cadastro" disabled="true" /></search>
+    <action>
+        <name id="cadastrar" disabled="true" />
+        <name id="editar" disabled="true" />
+        <name id="excluir" disabled="true" />
+        <name id="cancelar" disabled="true" />
+        <name id="visualizar" disabled="false" />
+    </action>
+</table>

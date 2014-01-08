@@ -1,0 +1,362 @@
+<style type="text/css">
+{literal}
+
+#content_table { float:left; padding:10px; }
+
+#menu_dd { float:left; width:100%; background:#eee; }
+#menu_dd ul { float:left; width:100%; }
+#menu_dd ul li { float:left; }
+#menu_dd ul li a { float:left; color:#666; text-decoration: none; padding:10px; }
+#menu_dd ul li a:hover, #menu_dd li.over ul {
+	background:#333;
+	color:#fff;
+	background-image: -webkit-gradient(
+	    linear,
+	    left bottom,
+	    left top,
+	    color-stop(0.3, rgb(51,51,51)),
+	    color-stop(1, rgb(85,85,85))
+	);
+	background-image: -moz-linear-gradient(
+	    center bottom,
+	    rgb(21,21,21) 30%,
+	    rgb(85,85,85) 100%
+	);
+}
+
+#menu_dd ul li ul { position:absolute; width:200px; top: 103px; display: none; background:#111; border:2px solid #000; z-index:9999; }
+#menu_dd ul li ul li { float:left; width:100%; border-bottom:1px solid #000; }
+#menu_dd ul li ul li a { float:left; padding:8px 2%; width:96%; color:#ccc; } /* Sub Menu Styles */
+#menu_dd li:hover ul, #menu_dd li.over ul { display: block; } /* The magic */
+
+
+/* Fix IE. Hide from IE Mac \*/
+* html ul li { float: left; height: 1%; }
+* html ul li a { height: 1%; }
+/* End */
+/*Grafico*/
+#legenda , #legenda2{ margin: 0 auto; width:60%; margin-top:20px; }
+
+#divGrafico2{
+    margin-top: 20px;
+}
+{/literal}
+</style>
+
+<script type="text/javascript">
+{literal}
+startList = function() {
+if (document.all&&document.getElementById) {
+navRoot = document.getElementById("nav");
+for (i=0; i<navRoot.childNodes.length; i++) {
+node = navRoot.childNodes[i];
+if (node.nodeName=="LI") {
+node.onmouseover=function() {
+this.className+=" over";
+  }
+  node.onmouseout=function() {
+  this.className=this.className.replace(" over", "");
+   }
+   }
+  }
+ }
+}
+window.onload=startList;
+{/literal}
+</script>
+
+<div id="menu_dd">
+<!--	<ul id='nav'>
+-->		
+                <li><a href="javascript:void(0);"></a>
+			<ul>
+				<li><a href="Relatorio.php?modulo=12&metodo={'getRelatorioMatricula'|base64_encode}" target="_blank">{$lng.txt_cadastro_matricula}</a></li>
+                                <li><a href="Relatorio.php?modulo=20&metodo={'getRelatorioVendas'|base64_encode}" target="_blank">{$lng.txt_pedido}</a></li>
+                                <li><a href="Relatorio.php?modulo=10&metodo={'getRelatorioDebitoCredito'|base64_encode}" target="_blank">{$lng.txt_creditoscustos}</a></li>
+                                <li><a href="Relatorio.php?modulo=19&metodo={'getRelatorioTrocas'|base64_encode}" target="_blank">{$lng.txt_troca}</a></li>
+                                <li><a href="Relatorio.php?modulo=18&metodo={'getRelatorioTransporte'|base64_encode}" target="_blank">{$lng.txt_relatorio_transporte}</a></li> 
+			</ul>
+		</li>
+                <!--
+		<li><a href="Relatorio.php?modulo=36&metodo={'getRelatorioTempoDeEsperaNaFila'|base64_encode}&grafico={'getGrafico'|base64_encode}">{$lng.txt_informacoes_da_fila}</a></li>
+		
+		<li><a href="javascript:void(0);">{$lng.txt_chamadas}</a>
+			<ul>
+				<li><a href="Relatorio.php?modulo=10&metodo={'getRelatorioTarifacaoChamadas'|base64_encode}">{$lng.txt_tarifacao_chamada}</a></li>
+				<li><a href="Relatorio.php?modulo=10&metodo={'getRelatorioChamadasEntrantes'|base64_encode}">{$lng.txt_chamadas_entrantes}</a></li>
+				<li><a href="Relatorio.php?modulo=10&metodo={'getRelatorioRastreabilidade'|base64_encode}">{$lng.txt_rastreabilidade_chamadas}</a></li>
+				<li><a href="Relatorio.php?modulo=10&metodo={'getChamadasFinalizadas'|base64_encode}&grafico={'getGraficoChamadasFinalizadas'|base64_encode}">{$lng.txt_chamdas_finalizadas}</a></li>
+			</ul>
+		</li>
+		<li><a href="Relatorio.php?modulo=57&metodo={'getRelatorioUsuarios'|base64_encode}">{$lng.txt_nom_usuario}</a></li>
+		<li><a href="Relatorio.php?modulo=13&metodo={'getRelatorioCentroCusto'|base64_encode}">{$lng.txt_nom_centro_custo}</a></li>
+		<li>
+			<a href="javascript:void(0);">{$lng.txt_ligacoes}</a>
+			<ul>
+				<li><a href="Relatorio.php?modulo=70&metodo={'getRelatorioLigacoes'|base64_encode}">{$lng.txt_ligacoes_agendadas}</a></li>
+				<li><a href="Relatorio.php?modulo=70&metodo={'getRelatorioLigacoesRealizadas'|base64_encode}" target="_blank">{$lng.txt_ligacoes_realizadas}</a></li>
+			</ul>
+		</li>
+		<li><a href="Relatorio.php?modulo=94&metodo={'getRelatorioInsercaoCreditos'|base64_encode}">{$lng.txt_relatorio_insercao_creditos}</a></li>
+		<li><a href="Relatorio.php?modulo=97&metodo={'getRelatorioGastoPorArea'|base64_encode}">{$lng.txt_gastos_area}</a></li>
+		<li><a href="Relatorio.php?modulo=28&metodo={'getGastosByFuncionarios'|base64_encode}" target="_blank">{$lng.txt_gastos_funcionarios}</a></li>
+	</ul>-->
+</div>
+
+<div id="content_table">
+
+   	<div class="title">Relatório {$lng.$nom_relatorio}</div><br/>
+	
+   	 <form class="principal" method="post" action="" id="frmRelatorio">
+
+   	 	<input type="hidden" name="modulo" id="modulo" value="{$modulo_relatorio}" />
+   	 	<input type="hidden" name="modulo_relatorio" id="modulo_relatorio" value="{$modulo}" />
+   	 	<input type="hidden" name="metodo" id="metodo" value="{$metodo}" />
+   	 	
+   	 	{if $metodoGrafico}<input type="hidden" name="metodoGrafico" id="metodoGrafico" value="{$metodoGrafico}" />{/if}
+   	 	
+   	 	
+		{if $formulario}
+		<fieldset>
+			{foreach from=$formulario item=campo key=label}
+			<label for="{$campo.name}">{$lng[$label]}</label>
+			{if $campo.type == 'text' or $campo.type == 'checkbox' or $campo.type == 'radio'}
+			
+			<input {foreach from=$campo key=atributo item=valor} {$atributo}="{$valor}" 
+				{/foreach} />
+			
+			{else if $campo.tag == 'select'}
+			
+			<select {foreach from=$campo key=atributo item=valor} 
+				{if !in_array($atributo, $exAttr) } {$atributo}="{$valor}" {/if} 
+					{/foreach}>
+				<option value="0">Selecione</option>
+				{foreach from=$campo.options key=cod item=text}
+				<option value="{$cod}">{$text}</option>
+				{/foreach}
+			</select>
+			
+			{/if}
+			{/foreach}
+			<input type='submit' value='buscar' />
+
+		</fieldset>
+		{else}
+		<p>Relatório não existe.</p>
+		{/if}
+
+	</form>
+	
+	{if $formulario}
+	
+	<br clear="all" /><br clear="all" />
+	<div id="boxExportarRelatorio">
+		<a href="javascript:void(0);" title="Exportar para PDF" class="Export" rel="pdf">&nbsp;</a>
+		<a href="javascript:void(0);" title="Exportar para XLS" class="Export" rel="xls">&nbsp;</a>
+		<a href="javascript:void(0);" title="Exportar para CSV" class="Export" rel="csv">&nbsp;</a>
+	</div>
+	
+	<br clear="all" /><br clear="all" />
+	<br clear="all" />
+	<table id="list"></table>
+	<div id="pager"></div>
+	{/if}
+
+</div>
+
+<div class="clr"></div>
+{if $grafico}
+{foreach from=$grafico[0].css_include item=item key=key}
+    <link rel="stylesheet" href="{$item}" type="text/css" />
+{/foreach}
+
+{foreach from=$grafico[0].js_include item=item key=key}
+    <script type="text/javascript" src="{$item}" ></script>
+{/foreach}
+<script type="text/javascript">
+{foreach from=$grafico[0].js_header item=item key=key}
+    {$item}
+{/foreach}
+{$grafico[0].grafico}
+{$grafico1[0].grafico}
+
+</script>
+{if $grafico[0].help}
+    <div class="infoBox" style="position:absolute;margin-left: 10px; max-width:{$grafico[0].help.largura};">
+        <span style="float: left; margin-right: 0.3em;" class="ui-icon ui-icon-info"></span>
+        <div>{$grafico[0].help.titulo}</div>
+        <br />
+        {$grafico[0].help.texto}
+    </div>
+{/if}
+<div style="text-align:center">
+    
+    
+    <div id="divGrafico" style="width:{$grafico[0].largura};height:{$grafico[0].altura};text-align:center;" >
+    </div>
+    
+    <div id="legenda"></div>
+    
+    <div id="divGrafico2" style="width:{$grafico1[0].largura};height:{$grafico1[0].altura};text-align:center;" >
+    </div>
+    <div id="legenda2"></div>
+    
+</div>
+{/if}
+
+<script type="text/javascript">
+
+{literal}
+
+$(function(){
+	
+	$(".decimal-noDefault").setMask({ mask: '99,999.999.999.999', type: 'reverse', defaultValue: '' });
+	
+	$('.datepicker').datepicker({ showOn: "button",buttonImage: "../_img/calendar.png",buttonImageOnly: true });
+	aplMask();
+	 
+	GRID_REPORT = {
+		colNames : {},
+		colModel : {},
+		postData : '',	
+		formData : {},
+		gridID : '#list',
+		data : {},
+		modulo : '',
+		firstCall : true,
+		gridParams : {},
+		args: {},
+		rowNum: 15,
+		rowList: [],
+		setFormData: function() {
+			
+			var form = $( this.frmID );
+			this.args = form.find('#args').val();
+			form.find('#args').val('');
+									
+			this.formData = form.serializeArray();
+		},
+		setPostData : function() {
+			
+			this.setFormData();
+
+			var filtros = $.param(this.formData);
+			
+			if( this.gridParams ) {
+				filtros += '&'+$.param(this.gridParams);
+			}
+			
+			this.postData = {
+				modulo : $('#modulo_relatorio').val()
+				, method : 'getRelatorio'
+				, args : {
+					modulo : $('#modulo').val()
+					, metodo : $('#metodo').val()
+					, filtros : filtros
+				}
+			};			
+		},
+		getData : function (){
+							
+			if ( !this.firstCall ) {
+				this.triggerRequest();				
+			} 		
+			
+			this.populate();			
+		},
+		triggerRequest : function(){
+			
+			this.setPostData();
+
+			// Atualiza os parâmetros para a exportação do relatório
+			Export.addArgs( GRID_REPORT.postData.args, true );						
+
+			jQuery.ajax({
+	           url: '../_ax/axRequest.php',
+	           data: GRID_REPORT.postData,
+	           dataType: "json",
+	           type: 'post',
+	           async: false,
+	           success: function(obj) {       	   
+            	  GRID_REPORT.colNames = obj.response.colNames;
+            	  GRID_REPORT.colModel = obj.response.colModel;
+            	  GRID_REPORT.data = obj.response.data;
+            	  GRID_REPORT.rowNum = parseInt(obj.response.data.rowNum);
+            	  GRID_REPORT.rowList = [ GRID_REPORT.rowNum , GRID_REPORT.rowNum+20 , GRID_REPORT.rowNum+30];            	  
+	           }
+	        });
+		},
+		populate : function(){
+			
+			if( this.data ){
+                jQuery( this.gridID )[0].addJSONData(this.data);
+            }
+
+		},
+		destroy : function(){
+			jQuery( this.gridID )[0].jqGrid('GridUnload', this.gridID);
+		},
+		create : function (){
+			
+			jQuery( this.gridID ).jqGrid({
+				datatype: function( postdata ) {
+					// tratamentos para os dados recebidos no Export
+					delete postdata._search;
+					delete postdata.modulo_relatorio;
+					delete postdata.nd;
+					// ----------
+					GRID_REPORT.gridParams = postdata;
+					GRID_REPORT.getData();
+				},
+				autowidth: true,
+				colNames: GRID_REPORT.colNames,
+				colModel : GRID_REPORT.colModel,
+				pager: '#pager',
+				rowNum: GRID_REPORT.rowNum,
+				rowList: GRID_REPORT.rowList,
+				sortorder: 'desc',
+				viewrecords: true,
+				caption: 'Relatório',
+                footerrow : true,
+                userDataOnFooter : true,
+				jsonReader :{
+					repeatitems: false,
+				    id: "0",
+				    root: 'rows',
+				    page: 'page',
+				    total: 'total',
+				    records: 'records'
+				}
+			});
+			
+			this.firstCall = false;
+			
+		},
+		init : function(gridID, frmID){
+
+			this.gridID = gridID;
+			this.frmID = frmID;
+
+			$(frmID).submit(function(){
+				jQuery( GRID_REPORT.gridID ).trigger("reloadGrid");
+				return false;
+			});
+			
+			if( $(this.gridID)[0] ){
+				this.triggerRequest();
+				this.create();			
+			}
+		}
+	};
+	
+	GRID_REPORT.init('#list', '#frmRelatorio');	
+
+});
+{/literal}
+
+</script>
+{if $arqsJs}
+{foreach from=$arqsJs item=arq key=k}
+{$arq}
+{/foreach}
+{/if}

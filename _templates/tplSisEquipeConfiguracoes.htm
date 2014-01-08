@@ -1,0 +1,36 @@
+
+{literal}
+<script language="javascript" type="text/javascript">
+</script>
+{/literal}
+<div id="content_table"> <!-- Tabela de registros -->
+	<form id="frm_{$modulo}" name="frm_{$modulo}" action="#" method="post">
+		<input type="hidden" name="f_action" id="f_action" value="{$acao}" />
+ 		<input type="hidden" name="f_mod" id="f_mod" value="{$modulo}" />
+					<input type="hidden" id="cod_equipe" name="cod_equipe" value="{$dados.cod_equipe}" />
+
+		<table>
+			<tr>
+				<td><label for="nom_logo" class="requiredLabel">{$lng.txt_nom_logo}</label></td>
+				<td><input type='text' {$display_form}  id="nom_logo" name="nom_logo" value="{$dados.nom_logo}" maxlength="100" class="form-text required" />	<label class="info" {$display_info} title="Clique para Editar" >&nbsp;{$dados.nom_logo} </label></td>
+				<td>{if $TipAjuda[1270]}<img src="../_img/help.png" width="24px" height="24px" alt="ajuda" onmouseover="Tip('{$TipAjuda[1270]}')" onmouseout="UnTip()" class="help"/>{/if}</td>
+			</tr>
+			<tr>
+				<td><label for="val_mensalidade" class="requiredLabel">{$lng.txt_val_mensalidade}</label></td>
+				<td><input type='text' {$display_form} alt="decimal" id="val_mensalidade" name="val_mensalidade" value="{$dados.val_mensalidade}" maxlength="12,4" class="form-text required" />	<label class="info" {$display_info} title="Clique para Editar" >&nbsp;{$dados.val_mensalidade} </label></td>
+				<td>{if $TipAjuda[1271]}<img src="../_img/help.png" width="24px" height="24px" alt="ajuda" onmouseover="Tip('{$TipAjuda[1271]}')" onmouseout="UnTip()" class="help"/>{/if}</td>
+			</tr>
+			<tr>
+				<td><label for="cod_tipo_param_voicemail" class="requiredLabel">{$lng.txt_cod_tipo_param_voicemail}</label></td>
+				<td><select  {$display_form}  id="cod_tipo_param_voicemail" name="cod_tipo_param_voicemail"  maxlength="11" class="form-text required" ><option value=''>--Selecione--</option>{html_options options=$lstcod_tipo_param_voicemail selected=$dados.cod_tipo_param_voicemail}	</select><label class="info" {$display_info} title="Clique para Editar" >&nbsp;{$dados.cod_tipo_param_voicemail} </label></td>
+				<td>{if $TipAjuda[1272]}<img src="../_img/help.png" width="24px" height="24px" alt="ajuda" onmouseover="Tip('{$TipAjuda[1272]}')" onmouseout="UnTip()" class="help"/>{/if}</td>
+			</tr>
+
+	</table>
+    <span id="msgbox" style="display:none"></span>
+    </form>                	
+</div>
+<div class="clr"></div>{literal}
+<script> 
+</script>
+{/literal}

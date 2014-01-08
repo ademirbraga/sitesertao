@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<table>
+    <name id="sis_perfil_permissoes" label="SisPerfilPermissoes" app="SisPerfilPermissoes" access="54" />
+    <foreignKeys>
+			<name id="cod_perfil" class="SisPerfil" label="Cod Perfil" key="cod_perfil" />
+			<name id="cod_permissao" class="SisPermissoes" label="Cod Permissao" key="cod_permissao" />
+	</foreignKeys>
+    <fields>
+		<name id="A.cod_perfil" tag="select" type="hidden" datatype="int" maxlength="10" label="Cod Perfil" required="1" />
+		<name id="A.num_nivel_permissao" tag="input" type="input" datatype="int" maxlength="11" label="Num Nivel Permissao" required="1" />
+		<name id="A.cod_permissao" tag="select" type="hidden" datatype="int" maxlength="10" label="Cod Permissao" required="1" />
+    </fields>
+    <export>
+		<name id="cod_perfil" enabled="true" />
+		<name id="num_nivel_permissao" enabled="true" />
+		<name id="cod_permissao" enabled="true" /></export>	
+    <search>
+		<name id="cod_perfil" enabled="true" />
+		<name id="num_nivel_permissao" enabled="true" />
+		<name id="cod_permissao" enabled="true" /></search>
+    <action>
+        <name id="cadastrar" enabled="true" />
+        <name id="editar" enabled="true" />
+        <name id="excluir" enabled="true" />
+        <name id="cancelar" enabled="true" />
+        <name id="visualizar" enabled="true" />
+    </action>
+</table>

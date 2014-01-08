@@ -1,0 +1,154 @@
+{$xxajax}
+<!-- BEGIN PAGE CONTAINER-->
+<div class="container-fluid">
+    <!-- BEGIN PAGE HEADER-->   
+    <div class="row-fluid">
+        <div class="span12">                
+            <h3 class="page-title">
+                Modulo {$NomeModulo}                
+            </h3>
+            <ul class="breadcrumb">
+                <li>
+                    <i class="icon-home"></i>
+                    <a href="index.html">Home</a> 
+                    <span class="icon-angle-right"></span>
+                </li>
+                <li>
+                    <a href="#">{$NomeModulo}</a>               
+                </li>
+               
+            </ul>
+        </div>
+    </div>
+    <!-- END PAGE HEADER-->
+   
+    <!-- BEGIN PAGE CONTENT-->   
+    <div class="row-fluid">
+        <div class="span12">
+            <!-- BEGIN VALIDATION STATES-->
+            <div class="portlet box green">
+                <div class="portlet-title">
+                    <h4><i class="icon-reorder"></i>Dados</h4>                    
+                </div>
+                <div class="portlet-body form">
+                    <!-- BEGIN FORM-->                     
+			<form id="frm_{$modulo}" name="frm_{$modulo}" action="#" method="post" class="form-horizontal">
+                            <input type="hidden" name="f_action" id="f_action" value="{$acao}" />
+			    <input type="hidden" name="f_mod" id="f_mod" value="{$modulo}" />                            
+				<input type="hidden" id="cod_TNUMM" name="cod_TNUMM" value="{$dados.cod_TNUMM}">
+
+				<div class="alert alert-error hide">
+				<button class="close" data-dismiss="alert"></button>                            
+				</div>
+				<div class="alert alert-success hide">
+				    <button class="close" data-dismiss="alert"></button>                            
+				</div>					
+				<div class="control-group">
+				    <label class="control-label">{$lng.txt_nom_arq_TNUMM}<span class="required">*</span> </label>
+				    <div class="controls">
+					{if $dados.dat_finalizado eq ''}<input type="file" id="Filedata" name="Filedata" class="default" />{/if}
+					<input type="hidden" id="nom_arq_TNUMM" name="nom_arq_TNUMM" value="{$dados.nom_arq_TNUMM}" class="default required" />					
+					<p id="response"></p>
+					<span class="text"><a href="{$dados.nom_arq_TNUMM}" target="_blank">{$dados.nom_arq_TNUMM}</a></span>
+				    </div>
+				 </div>	
+					
+				<div class="control-group">
+				    <label class="control-label">{$lng.txt_dat_cadastro}<span class="required">*</span> </label>
+				    <div class="controls">
+					<span class="text">{if $dados.dat_cadastro eq ''}{$smarty.now|date_format:"%d/%m/%Y %T"}{else}{$dados.dat_cadastro|date_format:"%d/%m/%Y %T"}{/if}</span>					
+				    </div>
+				</div>    
+
+				<div class="control-group">
+				    <label class="control-label">{$lng.txt_dat_finalizado}</label>
+				    <div class="controls">
+					{if $dados.dat_finalizado eq ''}
+					<div class="input-prepend date date-picker" data-date="{$smarty.now|date_format:'%d/%m/%Y'}" data-date-format="dd/mm/yyyy" data-date-viewmode="years" data-date-startdate="{$smarty.now|date_format:'%d/%m/%Y'}" {$display_form}>
+					    <span class="add-on" ><i class="icon-calendar"></i></span><input class="m-wrap m-ctrl-medium" size="16" type="text" id="dat_finalizado" name="dat_finalizado" value="{$dados.dat_finalizado|date_format:'%d/%m/%Y'}" />
+					</div>
+					{else}					
+					    <span class="text">{$dados.dat_finalizado|date_format:"%d/%m/%Y %T"} </span>
+					{/if}					                                
+				    </div>
+				 </div>	
+			
+			
+				
+				{if $Revenda eq 0}
+				<div class="control-group">				    
+				    <label class="control-label">{$lng.txt_cod_usuario}<span class="required">*</span> </label>
+				    <div class="controls">
+					<select {$display_form} id="cod_usuario" name="cod_usuario"  maxlength="11" data-required="1" class="span6 m-wrap popovers required" {if $TipAjuda[158]} data-content="{$TipAjuda[158]}" data-original-title="Dica" data-trigger="hover" data-placement="top" data-trigger="hover" data-placement="top" {/if}>
+					    <option value=''>Selecione</option>
+					    {html_options options=$lstcod_usuario selected=$dados.cod_usuario}
+					</select>
+					<span {$display_info} class="text">{$dados.nom_usuario} </span>					
+				    </div>
+				</div>
+				{else}
+				    <input type="hidden" id="cod_usuario" name="cod_usuario" value="{$smarty.session.usr.cod_usuario}">
+				{/if}	
+ 	 
+                </form> 
+                </div>
+            </div>
+            <!-- END VALIDATION STATES-->
+        </div>       
+    </div>
+    <!-- END PAGE CONTENT-->         
+</div>
+{literal}
+<script>
+    var modulo = {/literal}'{$modulo}'{literal};
+
+    (function () {
+        var input = document.getElementById("Filedata"), 
+        formdata = false;   
+
+        if (window.FormData) {
+            formdata = new FormData();            
+        }
+	
+        input.addEventListener("change", function (evt) {
+	    $("#response").html("Carregando . . .");
+            var i = 0, len = this.files.length, img, reader, file;
+	
+            for ( ; i < len; i++ ) {
+                file = this.files[i];
+	
+                //if (!!file.type.match(/doc.*/)) {
+                    if ( window.FileReader ) {
+                        reader = new FileReader();					
+                        reader.readAsDataURL(file);
+                    }
+                    if (formdata) {
+                        formdata.append("images[]", file);
+                    }
+                //}	
+            }
+	
+            if (formdata) {
+                $.ajax({
+                    url: "appUploads.php?modulo="+modulo,
+                    type: "POST",
+                    data: formdata,
+                    processData: false,
+                    contentType: false,
+                    success: function (response) {   
+			if(response == 'Error'){
+			    alert("Extensao nao permitida, favor enviar outro arquivo compativel com as extensoes: Pdf|Doc|Docx|Jpeg|Jpg|png|gif|xls|xlsx");
+			}else			
+                         $("#nom_arq_TNUMM").val(response);
+			 $("#response").html("Imagem anexada, favor salvar abaixo!");
+                    }
+                });
+            }
+        }, false);
+    }());
+  
+  
+   
+  
+</script>
+{/literal}

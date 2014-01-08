@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<table>
+    <name id="sis_usuario_configs" label="SisUsuarioConfigs" app="SisUsuarioConfigs" access="58" />
+    <foreignKeys>
+			<name id="cod_usuario" class="SisUsuario" label="Cod Usuario" key="cod_usuario" />
+			<name id="cod_equipe" class="SisUsuario" label="Cod Equipe" key="cod_equipe" />
+	</foreignKeys>
+    <fields>
+		<name id="A.cod_sis_usuario_configs" tag="input" type="hidden" datatype="int" maxlength="10" label="Cod Sis Usuario Configs" required="1" />
+		<name id="A.num_registro_pagina" tag="input" type="input" datatype="int" maxlength="11" label="Num Registro Pagina" required="1" />
+		<name id="A.num_casas_decimais" tag="input" type="input" datatype="int" maxlength="11" label="Num Casas Decimais" required="1" />
+		<name id="A.nom_moeda" tag="input" type="input" datatype="varchar" maxlength="3" label="Nom Moeda" required="1" />
+		<name id="A.bol_formata_tempo" tag="checkbox" type="checkbox" datatype="tinyint" maxlength="1" label="Bol Formata Tempo" required="1" />
+		<name id="A.bol_minutos" tag="checkbox" type="checkbox" datatype="tinyint" maxlength="1" label="Bol Minutos" required="1" />
+		<name id="A.cod_usuario" tag="select" type="select" datatype="int" maxlength="10" label="Cod Usuario" required="1" />
+		<name id="A.cod_equipe" tag="select" type="select" datatype="int" maxlength="10" label="Cod Equipe" required="1" />
+    </fields>
+    <export>
+		<name id="cod_sis_usuario_configs" enabled="true" />
+		<name id="num_registro_pagina" enabled="true" />
+		<name id="num_casas_decimais" enabled="true" />
+		<name id="nom_moeda" enabled="true" />
+		<name id="bol_formata_tempo" enabled="true" />
+		<name id="bol_minutos" enabled="true" />
+		<name id="cod_usuario" enabled="true" />
+		<name id="cod_equipe" enabled="true" /></export>	
+    <search>
+		<name id="cod_sis_usuario_configs" enabled="true" />
+		<name id="num_registro_pagina" enabled="true" />
+		<name id="num_casas_decimais" enabled="true" />
+		<name id="nom_moeda" enabled="true" />
+		<name id="bol_formata_tempo" enabled="true" />
+		<name id="bol_minutos" enabled="true" />
+		<name id="cod_usuario" enabled="true" />
+		<name id="cod_equipe" enabled="true" /></search>
+    <action>
+        <name id="cadastrar" enabled="true" />
+        <name id="editar" enabled="true" />
+        <name id="excluir" enabled="true" />
+        <name id="cancelar" enabled="true" />
+        <name id="visualizar" enabled="true" />
+    </action>
+</table>

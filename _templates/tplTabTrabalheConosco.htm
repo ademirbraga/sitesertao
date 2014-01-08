@@ -1,0 +1,83 @@
+{$xxajax}
+<!-- BEGIN PAGE CONTAINER-->
+<div class="container-fluid">
+    <!-- BEGIN PAGE HEADER-->   
+    <div class="row-fluid">
+        <div class="span12">                
+            <h3 class="page-title">
+                Modulo {$NomeModulo}                
+            </h3>
+            <ul class="breadcrumb">
+                <li>
+                    <i class="icon-home"></i>
+                    <a href="index.html">Home</a> 
+                    <span class="icon-angle-right"></span>
+                </li>
+                <li>
+                    <a href="#">{$NomeModulo}</a>               
+                </li>
+               
+            </ul>
+        </div>
+    </div>
+    <!-- END PAGE HEADER-->
+   
+    <!-- BEGIN PAGE CONTENT-->   
+    <div class="row-fluid">
+        <div class="span12">
+            <!-- BEGIN VALIDATION STATES-->
+            <div class="portlet box green">
+                <div class="portlet-title">
+                    <h4><i class="icon-reorder"></i>Dados</h4>                    
+                </div>
+                <div class="portlet-body form">
+                    <!-- BEGIN FORM-->                     
+			<form id="frm_{$modulo}" name="frm_{$modulo}" action="#" method="post" class="form-horizontal">
+                            <input type="hidden" name="f_action" id="f_action" value="{$acao}" />
+			    <input type="hidden" name="f_mod" id="f_mod" value="{$modulo}" />                            
+				<input type="hidden" id="cod_trabalhe_conosco" name="cod_trabalhe_conosco" value="{$dados.cod_trabalhe_conosco}">
+
+<div class="alert alert-error hide">
+        <button class="close" data-dismiss="alert"></button>                            
+        </div>
+        <div class="alert alert-success hide">
+            <button class="close" data-dismiss="alert"></button>                            
+        </div><div class="control-group">                          <label class="control-label">{$lng.txt_nom_profissional}<span class="required">*</span> </label>
+		<div class="controls">
+                                    <input type="text"  {$display_form}  id="nom_profissional" name="nom_profissional" value="{$dados.nom_profissional}" maxlength="125" data-required="1" class="span6 m-wrap popovers required" {if $TipAjuda[216]} data-content="{$TipAjuda[216]}" data-original-title="Dica" data-trigger="hover" data-placement="top" data-trigger="hover" data-placement="top" {/if}>
+		</div><span {$display_info} class="text">{$dados.nom_profissional} </span></div>	
+<div class="control-group">                          <label class="control-label">{$lng.txt_email_profissional}<span class="required">*</span> </label>
+		<div class="controls">
+                                    <input type="text"  {$display_form}  id="email_profissional" name="email_profissional" value="{$dados.email_profissional}" maxlength="125" data-required="1" class="span6 m-wrap popovers required" {if $TipAjuda[217]} data-content="{$TipAjuda[217]}" data-original-title="Dica" data-trigger="hover" data-placement="top" data-trigger="hover" data-placement="top" {/if}>
+		</div><span {$display_info} class="text">{$dados.email_profissional} </span></div>	
+<div class="control-group">                          <label class="control-label">{$lng.txt_num_cpf_profissional}<span class="required">*</span> </label>
+		<div class="controls">
+                                    <input type="text"  {$display_form}  id="num_cpf_profissional" name="num_cpf_profissional" value="{$dados.num_cpf_profissional}" maxlength="45" data-required="1" class="span6 m-wrap popovers required" {if $TipAjuda[218]} data-content="{$TipAjuda[218]}" data-original-title="Dica" data-trigger="hover" data-placement="top" data-trigger="hover" data-placement="top" {/if}>
+		</div><span {$display_info} class="text">{$dados.num_cpf_profissional} </span></div>	
+<div class="control-group">                          <label class="control-label">{$lng.txt_dat_nascimento}<span class="required">*</span> </label>
+		<div class="controls">
+                                    <input type="text"  {$display_form}  id="dat_nascimento" name="dat_nascimento" value="{$dados.dat_nascimento}" maxlength="60" data-required="1" class="span6 m-wrap popovers required" {if $TipAjuda[219]} data-content="{$TipAjuda[219]}" data-original-title="Dica" data-trigger="hover" data-placement="top" data-trigger="hover" data-placement="top" {/if}>
+		</div><span {$display_info} class="text">{$dados.dat_nascimento} </span></div>	
+<div class="control-group">                          <label class="control-label">{$lng.txt_num_tel_fixo}<span class="required">*</span> </label>
+		<div class="controls">
+                                    <input type="text"  {$display_form}  id="num_tel_fixo" name="num_tel_fixo" value="{$dados.num_tel_fixo}" maxlength="45" data-required="1" class="span6 m-wrap popovers required" {if $TipAjuda[220]} data-content="{$TipAjuda[220]}" data-original-title="Dica" data-trigger="hover" data-placement="top" data-trigger="hover" data-placement="top" {/if}>
+		</div><span {$display_info} class="text">{$dados.num_tel_fixo} </span></div>	
+<div class="control-group">                          <label class="control-label">{$lng.txt_num_tel_cel}<span class="required">*</span> </label>
+		<div class="controls">
+                                    <input type="text"  {$display_form}  id="num_tel_cel" name="num_tel_cel" value="{$dados.num_tel_cel}" maxlength="45" data-required="1" class="span6 m-wrap popovers required" {if $TipAjuda[221]} data-content="{$TipAjuda[221]}" data-original-title="Dica" data-trigger="hover" data-placement="top" data-trigger="hover" data-placement="top" {/if}>
+		</div><span {$display_info} class="text">{$dados.num_tel_cel} </span></div>	
+<div class="control-group">                          <label class="control-label">{$lng.txt_dsc_obj_profissional}<span class="required">*</span> </label>
+		<div class="controls">
+                                    <input type="text"  {$display_form}  id="dsc_obj_profissional" name="dsc_obj_profissional" value="{$dados.dsc_obj_profissional}" maxlength="60" data-required="1" class="span6 m-wrap popovers required" {if $TipAjuda[222]} data-content="{$TipAjuda[222]}" data-original-title="Dica" data-trigger="hover" data-placement="top" data-trigger="hover" data-placement="top" {/if}>
+		</div><span {$display_info} class="text">{$dados.dsc_obj_profissional} </span></div>	
+<div class="control-group">                          <label class="control-label">{$lng.txt_dat_cadastro}<span class="required">*</span> </label>
+<span {$display_info} class="text">{if $dados.dat_cadastro eq ''}{$smarty.now|date_format:"%d/%m/%Y %T"}{else}{$dados.dat_cadastro}{/if}</span></div>	
+ 	 
+                </form> 
+                </div>
+            </div>
+            <!-- END VALIDATION STATES-->
+        </div>       
+    </div>
+    <!-- END PAGE CONTENT-->         
+</div>

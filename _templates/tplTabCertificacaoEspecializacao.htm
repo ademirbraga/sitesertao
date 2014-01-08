@@ -1,0 +1,71 @@
+{$xxajax}
+<!-- BEGIN PAGE CONTAINER-->
+<div class="container-fluid">
+    <!-- BEGIN PAGE HEADER-->   
+    <div class="row-fluid">
+        <div class="span12">                
+            <h3 class="page-title">
+                Modulo {$NomeModulo}                
+            </h3>
+            <ul class="breadcrumb">
+                <li>
+                    <i class="icon-home"></i>
+                    <a href="index.html">Home</a> 
+                    <span class="icon-angle-right"></span>
+                </li>
+                <li>
+                    <a href="#">{$NomeModulo}</a>               
+                </li>
+               
+            </ul>
+        </div>
+    </div>
+    <!-- END PAGE HEADER-->
+   
+    <!-- BEGIN PAGE CONTENT-->   
+    <div class="row-fluid">
+        <div class="span12">
+            <!-- BEGIN VALIDATION STATES-->
+            <div class="portlet box green">
+                <div class="portlet-title">
+                    <h4><i class="icon-reorder"></i>Dados</h4>                    
+                </div>
+                <div class="portlet-body form">
+                    <!-- BEGIN FORM-->                     
+			<form id="frm_{$modulo}" name="frm_{$modulo}" action="#" method="post" class="form-horizontal">
+                            <input type="hidden" name="f_action" id="f_action" value="{$acao}" />
+			    <input type="hidden" name="f_mod" id="f_mod" value="{$modulo}" />                            
+				<input type="hidden" id="cod_certificacao_especializacao" name="cod_certificacao_especializacao" value="{$dados.cod_certificacao_especializacao}">
+
+<div class="alert alert-error hide">
+        <button class="close" data-dismiss="alert"></button>                            
+        </div>
+        <div class="alert alert-success hide">
+            <button class="close" data-dismiss="alert"></button>                            
+        </div><div class="control-group">                          <label class="control-label">{$lng.txt_nom_certificacao}<span class="required">*</span> </label>
+		<div class="controls">
+                                    <input type="text"  {$display_form}  id="nom_certificacao" name="nom_certificacao" value="{$dados.nom_certificacao}" maxlength="225" data-required="1" class="span6 m-wrap popovers required" {if $TipAjuda[15]} data-content="{$TipAjuda[15]}" data-original-title="Dica" data-trigger="hover" data-placement="top" data-trigger="hover" data-placement="top" {/if}>
+		</div><span {$display_info} class="text">{$dados.nom_certificacao} </span></div>	
+<div class="control-group">                          <label class="control-label">{$lng.txt_dsc_certificacao}<span class="required">*</span> </label>
+		<div class="controls">
+                                    <input type="text"  {$display_form}  id="dsc_certificacao" name="dsc_certificacao" value="{$dados.dsc_certificacao}" maxlength="225" data-required="1" class="span6 m-wrap popovers required" {if $TipAjuda[16]} data-content="{$TipAjuda[16]}" data-original-title="Dica" data-trigger="hover" data-placement="top" data-trigger="hover" data-placement="top" {/if}>
+		</div><span {$display_info} class="text">{$dados.dsc_certificacao} </span></div>	
+<div class="control-group">                          <label class="control-label">{$lng.txt_dat_certificacao}<span class="required">*</span> </label>
+		<div class="controls">
+                                    <input type="text"  {$display_form}  id="dat_certificacao" name="dat_certificacao" value="{$dados.dat_certificacao}" maxlength="60" data-required="1" class="span6 m-wrap popovers required" {if $TipAjuda[17]} data-content="{$TipAjuda[17]}" data-original-title="Dica" data-trigger="hover" data-placement="top" data-trigger="hover" data-placement="top" {/if}>
+		</div><span {$display_info} class="text">{$dados.dat_certificacao} </span></div>	
+<div class="control-group">                          <label class="control-label">{$lng.txt_dat_cadastro}<span class="required">*</span> </label>
+<span {$display_info} class="text">{if $dados.dat_cadastro eq ''}{$smarty.now|date_format:"%d/%m/%Y %T"}{else}{$dados.dat_cadastro}{/if}</span></div>	
+<div class="control-group">                          <label class="control-label">{$lng.txt_dat_finalizado}</label>
+		<div class="controls">
+                                    <input type="text"  {$display_form} alt="date" id="dat_finalizado" name="dat_finalizado" value="{$dados.dat_finalizado}" maxlength="60" class="span6 m-wrap popovers" {if $TipAjuda[19]} data-content="{$TipAjuda[19]}" data-original-title="Dica" data-trigger="hover" data-placement="top" data-trigger="hover" data-placement="top" {/if}>
+		</div><span {$display_info} class="text">{$dados.dat_finalizado} </span></div>	
+ 	 
+                </form> 
+                </div>
+            </div>
+            <!-- END VALIDATION STATES-->
+        </div>       
+    </div>
+    <!-- END PAGE CONTENT-->         
+</div>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<table>
+    <name id="tab_transacao" label="TabTransacao" app="TabTransacao" access="19" />
+    <foreignKeys>
+	<name id="cod_equipe" class="SisEquipe" label="Cod Equipe" key="cod_equipe" />
+	</foreignKeys>
+    <fields>
+		<name id="A.cod_transacao" tag="input" type="hidden" datatype="int" maxlength="11" label="Cod Transacao" required="1" />
+		<name id="A.cod_equipe" tag="select" type="select" datatype="int" maxlength="11" label="Cod Equipe" required="0" />
+		<name id="A.cod_pessoa" tag="input" type="input" datatype="int" maxlength="11" label="Cod Pessoa" required="0" />
+		<name id="A.dat_compra" tag="input" type="input" datatype="datetime" maxlength="60" label="Dat Compra" required="0" />
+		<name id="A.vlr_compra" tag="input" type="input" datatype="decimal" maxlength="20,10" label="Vlr Compra" required="0" />
+		<name id="A.nom_tipo_pagamento" tag="input" type="input" datatype="varchar" maxlength="50" label="Nom Tipo Pagamento" required="0" />
+		<name id="A.cod_usuario" tag="input" type="input" datatype="int" maxlength="11" label="Cod Usuario" required="0" />
+		<name id="A.dat_importacao" tag="input" type="input" datatype="datetime" maxlength="60" label="Dat Importacao" required="0" />
+    </fields>
+    <export>
+		<name id="cod_transacao" disabled="true" />
+		<name id="cod_equipe" disabled="true" />
+		<name id="cod_pessoa" disabled="true" />
+		<name id="dat_compra" disabled="true" />
+		<name id="vlr_compra" disabled="true" />
+		<name id="nom_tipo_pagamento" disabled="true" />
+		<name id="cod_usuario" disabled="true" />
+		<name id="dat_importacao" disabled="true" /></export>	
+    <search>
+		<name id="cod_transacao" disabled="true" />
+		<name id="cod_equipe" disabled="true" />
+		<name id="cod_pessoa" disabled="true" />
+		<name id="dat_compra" disabled="true" />
+		<name id="vlr_compra" disabled="true" />
+		<name id="nom_tipo_pagamento" disabled="true" />
+		<name id="cod_usuario" disabled="true" />
+		<name id="dat_importacao" disabled="true" /></search>
+    <action>
+        <name id="cadastrar" disabled="true" />
+        <name id="editar" disabled="true" />
+        <name id="excluir" disabled="true" />
+        <name id="cancelar" disabled="true" />
+        <name id="visualizar" disabled="false" />
+    </action>
+</table>

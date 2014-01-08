@@ -1,0 +1,60 @@
+<?php
+	/*
+	** @autor Claudia Matos <claudiarfm@yahoo.com.br> - Claudia Matos - claudiarfm@yahoo.com.br
+	* -------------------------------------------------------
+	* Aplicativo:       appTabCupomXPessoa.php
+	* Gerada em:        08.10.2013
+	* Arquivo:          ../projSertao/_app/appTabCupomXPessoa.php
+	* Tabela:           tab_cupom_x_pessoa
+	* Banco:	    bd_mysql_sertao
+	* -------------------------------------------------------	
+	*
+	*/
+
+	// Diretorio raiz
+	if(!defined('WWW_ROOT'))
+		define("WWW_ROOT","../");
+				
+	// Arquivo de constantes, configuracao e inicializacao
+	include(WWW_ROOT."/_inc/_php/geral.inc.php");
+	
+	$objPrincipal = new TabCupomXPessoa();
+        $NomeModulo = $objPrincipal->getnomModulo();	
+
+	if(!empty($id)){
+	
+		$objPrincipal->listar(NULL,$where = "cod_cupom = $id");
+		$dados = $objPrincipal->getRegistro();	
+		
+		$smarty->assign('dados', $dados);
+	}	
+
+	$objTabCupom = new TabCupom();
+	$lstcod_cupom = $objTabCupom->listar("",false);
+	$lstcod_cupom = $objTabCupom->formatDados("cod_cupom","nom_cupom");
+	$smarty->assign("lstcod_cupom",$lstcod_cupom);
+	unset($objTabCupom);
+
+	$objTabPessoa = new TabPessoa();
+	$lstcod_pessoa = $objTabPessoa->listar("",false);
+	$lstcod_pessoa = $objTabPessoa->formatDados("cod_pessoa","nom_pessoa");
+	$smarty->assign("lstcod_pessoa",$lstcod_pessoa);
+	unset($objTabPessoa);
+
+	$smarty->assign('modulo', MODULO_TABCUPOMXPESSOA);
+	$smarty->assign('acao', $acao);	
+	
+	if(@empty($index_form)) $index_form = 0;
+	$smarty->assign('index_form',$index_form);
+	$smarty->assign('display_form',$display_form);
+	$smarty->assign('display_form_edit',$display_form_edit);
+	$smarty->assign('display_info',$display_info);
+	$smarty->assign('display_info_edit',$display_info_edit);
+	$smarty->assign('display_cadastro',$display_cadastro);
+	$smarty->assign('display_atualiza',$display_atualiza);	
+	$smarty->assign('xxajax', $xxajax);
+        $smarty->assign('NomeModulo', $lng[$NomeModulo]);
+	
+	$tplConteudo = $smarty->fetch('tplTabCupomXPessoa.htm');
+	
+?>

@@ -1,0 +1,61 @@
+{$xxajax}
+<!-- BEGIN PAGE CONTAINER-->
+<div class="container-fluid">
+    <!-- BEGIN PAGE HEADER-->   
+    <div class="row-fluid">
+        <div class="span12">                
+            <h3 class="page-title">
+                Modulo {$NomeModulo}                
+            </h3>
+            <ul class="breadcrumb">
+                <li>
+                    <i class="icon-home"></i>
+                    <a href="index.html">Home</a> 
+                    <span class="icon-angle-right"></span>
+                </li>
+                <li>
+                    <a href="#">{$NomeModulo}</a>               
+                </li>
+               
+            </ul>
+        </div>
+    </div>
+    <!-- END PAGE HEADER-->
+   
+    <!-- BEGIN PAGE CONTENT-->   
+    <div class="row-fluid">
+        <div class="span12">
+            <!-- BEGIN VALIDATION STATES-->
+            <div class="portlet box green">
+                <div class="portlet-title">
+                    <h4><i class="icon-reorder"></i>Dados</h4>                    
+                </div>
+                <div class="portlet-body form">
+                    <!-- BEGIN FORM-->                     
+			<form id="frm_{$modulo}" name="frm_{$modulo}" action="#" method="post" class="form-horizontal">
+                            <input type="hidden" name="f_action" id="f_action" value="{$acao}" />
+			    <input type="hidden" name="f_mod" id="f_mod" value="{$modulo}" />                            
+				<input type="hidden" id="cod_jornal_permitido" name="cod_jornal_permitido" value="{$dados.cod_jornal_permitido}">
+
+<div class="alert alert-error hide">
+        <button class="close" data-dismiss="alert"></button>                            
+        </div>
+        <div class="alert alert-success hide">
+            <button class="close" data-dismiss="alert"></button>                            
+        </div><div class="control-group">                          <label class="control-label">{$lng.txt_cod_jornal}<span class="required">*</span> </label>
+		<div class="controls">
+                                <select  {$display_form}  id="cod_jornal" name="cod_jornal"  maxlength="11" data-required="1" class="span6 m-wrap popovers required" {if $TipAjuda[152]} data-content="{$TipAjuda[152]}" data-original-title="Dica" data-trigger="hover" data-placement="top" data-trigger="hover" data-placement="top" {/if}><option value=''>Selecione</option>{html_options options=$lstcod_jornal selected=$dados.cod_jornal}
+		</select></div><span {$display_info} class="text">{$dados.cod_jornal} </span></div>	
+<div class="control-group">                          <label class="control-label">{$lng.txt_cod_perfil}<span class="required">*</span> </label>
+		<div class="controls">
+                                <select  {$display_form}  id="cod_perfil" name="cod_perfil"  maxlength="11" data-required="1" class="span6 m-wrap popovers required" {if $TipAjuda[153]} data-content="{$TipAjuda[153]}" data-original-title="Dica" data-trigger="hover" data-placement="top" data-trigger="hover" data-placement="top" {/if}><option value=''>Selecione</option>{html_options options=$lstcod_perfil selected=$dados.cod_perfil}
+		</select></div><span {$display_info} class="text">{$dados.cod_perfil} </span></div>	
+ 	 
+                </form> 
+                </div>
+            </div>
+            <!-- END VALIDATION STATES-->
+        </div>       
+    </div>
+    <!-- END PAGE CONTENT-->         
+</div>

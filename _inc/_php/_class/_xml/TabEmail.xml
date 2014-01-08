@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<table>
+    <name id="tab_email" label="TabEmail" app="TabEmail" access="6" />
+    <foreignKeys>
+	<name id="cod_usuario" class="SisUsuario" label="Cod Usuario" key="cod_usuario" />
+	</foreignKeys>
+    <fields>
+		<name id="A.cod_email" tag="input" type="hidden" datatype="int" maxlength="11" label="Cod Email" required="1" />
+		<name id="A.cod_usuario" tag="select" type="select" datatype="int" maxlength="11" label="Cod Usuario" required="1" />
+		<name id="A.des_titulo_email" tag="input" type="input" datatype="varchar" maxlength="100" label="Des Titulo Email" required="1" />
+		<name id="A.des_corpo_email" tag="input" type="input" datatype="varchar" maxlength="5000" label="Des Corpo Email" required="1" />
+		<name id="A.dat_cadastro" tag="input" type="input" datatype="timestamp" maxlength="60" label="Dat Cadastro" required="1" />
+		<name id="A.dat_inicio_envio" tag="input" type="input" datatype="datetime" maxlength="60" label="Dat Inicio Envio" required="0" />
+		<name id="A.dat_fim_envio" tag="input" type="input" datatype="datetime" maxlength="60" label="Dat Fim Envio" required="0" />
+		<name id="A.dat_termino" tag="input" type="input" datatype="timestamp" maxlength="60" label="Dat Termino" required="0" />
+    </fields>
+    <export>
+		<name id="cod_email" disabled="true" />
+		<name id="cod_usuario" disabled="true" />
+		<name id="des_titulo_email" disabled="true" />
+		<name id="des_corpo_email" disabled="true" />
+		<name id="dat_cadastro" disabled="true" />
+		<name id="dat_inicio_envio" disabled="true" />
+		<name id="dat_fim_envio" disabled="true" />
+		<name id="dat_termino" disabled="true" /></export>	
+    <search>
+		<name id="cod_email" disabled="true" />
+		<name id="cod_usuario" disabled="true" />
+		<name id="des_titulo_email" disabled="true" />
+		<name id="des_corpo_email" disabled="true" />
+		<name id="dat_cadastro" disabled="true" />
+		<name id="dat_inicio_envio" disabled="true" />
+		<name id="dat_fim_envio" disabled="true" />
+		<name id="dat_termino" disabled="true" /></search>
+    <action>
+        <name id="cadastrar" disabled="true" />
+        <name id="editar" disabled="true" />
+        <name id="excluir" disabled="true" />
+        <name id="cancelar" disabled="true" />
+        <name id="visualizar" disabled="false" />
+    </action>
+</table>

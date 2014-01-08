@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<table>
+    <name id="tab_cupom_x_pessoa" label="TabCupomXPessoa" app="TabCupomXPessoa" access="4" />
+    <foreignKeys>
+	<name id="cod_cupom" class="TabCupom" label="Cod Cupom" key="cod_cupom" />
+			<name id="cod_pessoa" class="TabPessoa" label="Cod Pessoa" key="cod_pessoa" />
+	</foreignKeys>
+    <fields>
+		<name id="A.cod_cupom" tag="select" type="select" datatype="int" maxlength="11" label="Cod Cupom" required="0" />
+		<name id="A.cod_pessoa" tag="select" type="select" datatype="int" maxlength="11" label="Cod Pessoa" required="0" />
+		<name id="A.bol_resgate" tag="checkbox" type="checkbox" datatype="tinyint" maxlength="4" label="Bol Resgate" required="0" />
+		<name id="A.dat_resgate" tag="input" type="input" datatype="datetime" maxlength="60" label="Dat Resgate" required="0" />
+    </fields>
+    <export>
+		<name id="cod_cupom" disabled="true" />
+		<name id="cod_pessoa" disabled="true" />
+		<name id="bol_resgate" disabled="true" />
+		<name id="dat_resgate" disabled="true" /></export>	
+    <search>
+		<name id="cod_cupom" disabled="true" />
+		<name id="cod_pessoa" disabled="true" />
+		<name id="bol_resgate" disabled="true" />
+		<name id="dat_resgate" disabled="true" /></search>
+    <action>
+        <name id="cadastrar" disabled="true" />
+        <name id="editar" disabled="true" />
+        <name id="excluir" disabled="true" />
+        <name id="cancelar" disabled="true" />
+        <name id="visualizar" disabled="false" />
+    </action>
+</table>

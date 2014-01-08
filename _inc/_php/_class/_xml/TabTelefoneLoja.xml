@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<table>
+    <name id="tab_telefone_loja" label="TabTelefoneLoja" app="TabTelefoneLoja" access="16" />
+    <foreignKeys>
+	<name id="cod_equipe" class="SisEquipe" label="Cod Equipe" key="cod_equipe" />
+			<name id="cod_tipo_telefone" class="TabTipoTelefone" label="Cod Tipo Telefone" key="cod_tipo_telefone" />
+	</foreignKeys>
+    <fields>
+		<name id="A.cod_telefone_loja" tag="input" type="hidden" datatype="int" maxlength="11" label="Cod Telefone Loja" required="1" />
+		<name id="A.cod_equipe" tag="select" type="select" datatype="int" maxlength="11" label="Cod Equipe" required="0" />
+		<name id="A.cod_tipo_telefone" tag="select" type="select" datatype="int" maxlength="11" label="Cod Tipo Telefone" required="0" />
+		<name id="A.des_nro_telefone" tag="input" type="input" datatype="varchar" maxlength="15" label="Des Nro Telefone" required="0" />
+    </fields>
+    <export>
+		<name id="cod_telefone_loja" disabled="true" />
+		<name id="cod_equipe" disabled="true" />
+		<name id="cod_tipo_telefone" disabled="true" />
+		<name id="des_nro_telefone" disabled="true" /></export>	
+    <search>
+		<name id="cod_telefone_loja" disabled="true" />
+		<name id="cod_equipe" disabled="true" />
+		<name id="cod_tipo_telefone" disabled="true" />
+		<name id="des_nro_telefone" disabled="true" /></search>
+    <action>
+        <name id="cadastrar" disabled="true" />
+        <name id="editar" disabled="true" />
+        <name id="excluir" disabled="true" />
+        <name id="cancelar" disabled="true" />
+        <name id="visualizar" disabled="false" />
+    </action>
+</table>
